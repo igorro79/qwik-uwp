@@ -1,0 +1,243 @@
+/**
+ * WHAT IS THIS FILE?
+ *
+ * Globally applied styles. No matter which components are in the page or matching route,
+ * the styles in here will be applied to the Document, without any sort of CSS scoping.
+ *
+ */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --header-h: 77px;
+  --header-h-lg: 87px;
+  --header-h-xl: 90px;
+
+  /* scrollbar colors firefox */
+  --primary: #171717;
+  --secondary: #ff304d;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  transition-duration: 150ms;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+@layer base {
+  .container {
+    @apply mx-auto px-5 !max-w-[1920px] lg:px-[30px] 3xl:px-[135px];
+  }
+  *::selection {
+    @apply bg-main text-white;
+  }
+
+  .header__contact-body::-webkit-scrollbar,
+  .form__header::-webkit-scrollbar,
+  html::-webkit-scrollbar,
+  #popupForms::-webkit-scrollbar {
+    @apply w-[10px]  bg-dark;
+  }
+  /* popupForms */
+  .form__header::-webkit-scrollbar-thumb,
+  html::-webkit-scrollbar-thumb,
+  .header__contact-body::-webkit-scrollbar-thumb,
+  #popupForms::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-main;
+  }
+}
+
+@layer components {
+  html {
+    @apply scroll-smooth  text-base font-medium text-dark;
+  }
+
+  .wrapper {
+    @apply relative m-auto flex  max-w-full flex-col  pt-[var(--header-h)] lg:pt-[var(--header-h-xl)] xl:pt-[var(--header-h-xl)];
+  }
+
+  .lock-wrapper {
+    @apply h-screen overflow-hidden;
+  }
+  /* =========== TOTAL WHITE HEADER ============ */
+
+  .header.white-header {
+    @apply bg-light text-dark dark:bg-dark dark:text-white;
+  }
+  .white-header #nav {
+    @apply text-dark dark:text-white;
+  }
+  .white-header .burger {
+    @apply text-dark dark:text-white;
+  }
+  .white-header .white-header-language {
+    @apply hover:bg-lightGrey dark:hover:bg-transparent;
+  }
+
+  .burger-paint-header-dark.header.white-header {
+    @apply bg-dark text-white dark:bg-dark dark:text-white;
+  }
+  .burger-paint-header-dark.white-header #nav {
+    @apply text-white dark:text-white;
+  }
+  .burger-paint-header-dark.white-header .burger {
+    @apply text-white dark:text-white;
+  }
+  .burger-paint-header-dark.white-header .white-header-language {
+    @apply hover:bg-transparent dark:hover:bg-transparent;
+  }
+
+  /* =========== BIG RED ROUND BUTTON ============ */
+
+  /* .big-red-btn {
+    @apply;
+  } */
+  .big-red-btn.cases-page__big-red-btn {
+    @apply h-[125px] w-[125px]  lg:h-[125px] lg:w-[125px] xl:h-[177px] xl:w-[177px];
+  }
+  .big-red-btn#btn-close-popup-forms {
+    @apply relative mx-auto;
+  }
+  .big-red-btn#btnDiscuss {
+    @apply absolute;
+  }
+  .big-red-btn:disabled {
+    @apply transition-all before:bg-middleGrey xl:hover:before:scale-100;
+  }
+
+  /* =================  SWIPER ================*/
+
+  .mySwiper-container {
+    @apply w-full overflow-hidden;
+  }
+  .mySwiper .swiper-pagination {
+    @apply !bottom-[30px] lg:!bottom-[40px] xl:!bottom-[10px];
+  }
+  .mySwiper .swiper-pagination-bullet {
+    @apply !mx-[5px] bg-middleGrey opacity-100 lg:!mx-[7px] lg:h-[10px] 
+  lg:w-[10px] xl:!mx-[10px] xl:h-[14px] xl:w-[14px] xl:bg-white;
+  }
+  .mySwiper .swiper-pagination-bullet-active {
+    @apply bg-main;
+  }
+  /* -----------blog swiper main page---------- */
+
+  .blogSwiper .swiper-slide {
+    @apply w-auto;
+  }
+
+  /*=====================================
+STYLES 
+======================================*/
+
+  ._nav-item-activ {
+    @apply text-main;
+  }
+
+  /*------------- menu mobile button language ------------*/
+
+  .active-language-menu {
+    @apply pointer-events-none order-1 bg-grey;
+  }
+
+  /*================================================
+Styles borders  btn 
+================================================ */
+  /* border-lightDarkGrey xl:border-t */
+
+  /**/
+  /* .btn {
+    @apply m-auto flex  w-full
+         items-center justify-center gap-[10px] rounded-full bg-main py-[16px] 
+         text-base font-bold uppercase text-white transition-all
+        sm:max-w-[357px];
+  } */
+
+  /*flex*/
+  /*.btn__services {
+    @apply m-auto   w-full
+         items-center justify-center gap-[10px] rounded-full bg-main py-[16px] 
+
+         text-base font-bold uppercase text-white transition-all
+        sm:max-w-[357px];
+  }*/
+
+  .btn__transparent {
+    @apply m-auto  flex 
+        w-full items-center justify-center gap-[10px] 
+        rounded-full border-[2px] border-main p-[12px] 
+        text-sm font-bold uppercase leading-[24px]
+        text-dark 
+        transition-all
+        sm:max-w-[357px];
+  }
+
+  /* TODO added border-[3px] on hover */
+
+  /*.btn__transparent:hover {
+    @apply border-[3px];
+  }*/
+
+  .btn__red {
+    @apply flex flex-row items-center justify-center
+        gap-[10px] rounded-[70px] border-[1px] border-main bg-main py-4 px-9
+        text-base font-bold uppercase  leading-5 text-white;
+  }
+
+  .btn__red-service {
+    @apply flex flex-row items-center justify-center
+        gap-[10px] rounded-[70px] border-[1px] border-main bg-main py-[13px] px-[28px]
+        text-sm font-bold uppercase  leading-[171%] text-white;
+  }
+
+  .btn__dark-atricle {
+    @apply flex flex-row items-center justify-center
+         rounded-[70px] border-[1px]  bg-dark py-[13px] px-[20px]
+        text-sm font-bold uppercase  leading-[171%] text-white;
+  }
+
+  /*============== 404 page =============== */
+  .nopage__button:hover ~ div {
+    @apply text-main;
+  }
+  .nopage__button:hover ~ #back-home {
+    @apply visible opacity-100;
+  }
+  .nopage__button:hover ~ #not-found {
+    @apply invisible opacity-0;
+  }
+
+  /*=== submit button spunner === */
+  .spinner_ajPY {
+    transform-origin: center;
+    animation: spinner_AtaB 0.75s infinite linear;
+  }
+  @keyframes spinner_AtaB {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /*------ filter button ----- */
+  .category__filter-btn {
+    @apply flex gap-2 rounded-[40px] border border-transparent bg-lightGrey px-4 py-[11px] text-sm uppercase leading-[1.2]
+     transition-all hover:bg-dark hover:text-white active:border-main dark:border-lightGrey dark:text-dark dark:hover:text-white;
+  }
+  .category__filter-btn--active {
+    @apply bg-dark text-white dark:text-white;
+  }
+
+  section.carusel-total-white {
+    @apply bg-light text-dark dark:bg-dark dark:text-white;
+  }
+
+  .to-animate {
+    @apply translate-y-10 opacity-0 transition duration-1000 ease-out;
+  }
+  .to-animate.in-view {
+    @apply translate-y-0 opacity-100;
+  }
+}
