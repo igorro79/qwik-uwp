@@ -165,7 +165,7 @@ Styles borders  btn
         sm:max-w-[357px];
   }*/
 
-  .btn__transparent {
+  /* .btn__transparent {
     @apply m-auto  flex 
         w-full items-center justify-center gap-[10px] 
         rounded-full border-[2px] border-main p-[12px] 
@@ -173,7 +173,7 @@ Styles borders  btn
         text-dark 
         transition-all
         sm:max-w-[357px];
-  }
+  } */
 
   /* TODO added border-[3px] on hover */
 
