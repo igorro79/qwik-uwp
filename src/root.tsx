@@ -22,6 +22,7 @@ export default component$(() => {
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="robots" content="noindex, nofollow" />
+
         <RouterHead />
       </head>
       <body lang="en" class="bg-light min-h-screen dark:bg-dark">

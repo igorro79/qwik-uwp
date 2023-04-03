@@ -10,7 +10,6 @@ export default component$(() => {
   return (
     <>
       <Hero />
-
       <div class="section bright">
         <div class="container  flex flex-col gap-5">
           <BigRedBtn>
