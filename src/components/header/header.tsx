@@ -1,24 +1,34 @@
 //    document.documentElement.classList.add{value}
 import { component$, useVisibleTask$, $ } from "@builder.io/qwik";
+import { isBrowser } from "@builder.io/qwik/build";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 import Logo from "~/components/logo/logo";
 import ThemeBtn from "~/components/theme-btn/theme-btn";
 import ContactBtn from "~/components/header-contact-btn/header-contact-btn";
+import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   const [currentTheme, changeTheme] = useLocalStorage("theme", "light");
-  useVisibleTask$(() => {
-    console.log(currentTheme);
+
+  useVisibleTask$(({ track }) => {
+    track(currentTheme);
+    if (isBrowser) {
+      console.log(currentTheme.value);
+      currentTheme.value === "dark"
+        ? document.documentElement.classList.add("dark")
+        : document.documentElement.classList.remove("dark");
+    }
   });
 
   const switchTheme = $(() =>
     currentTheme.value !== "dark" ? changeTheme("dark") : changeTheme("light")
   );
+
   return (
     <header
       id="mainNav"
-      class="header min-h-[var(--header-h)] bg-dark text-white md:min-h-[var(--header-h-lg)] lg:min-h-[var(--header-h-xl)]"
+      class="fixed left-0 right-0 top-0 z-30 min-h-[var(--header-h)] bg-dark text-white md:min-h-[var(--header-h-lg)] lg:min-h-[var(--header-h-xl)]"
     >
       {/* <!-- container --> */}
       <div
@@ -37,7 +47,10 @@ export default component$(() => {
               <Logo />
 
               {/* <!--  BEGIN: thema-d --> */}
-              <ThemeBtn switch={switchTheme} class={"mx-auto"} />
+              <ThemeBtn
+                switch={switchTheme}
+                currentTheme={currentTheme.value}
+              />
 
               {/* <!--  END: thema-d --> */}
             </div>
@@ -51,17 +64,17 @@ export default component$(() => {
               class="text-base uppercase text-lightGrey transition-all xl:flex xl:justify-between"
             >
               <li class=" ">
-                <a
+                <Link
                   href="/cases"
                   class="translate-underline__hover-line__dark _nav-item-activ"
                   aria-label="cases page"
                 >
                   Cases
-                </a>
+                </Link>
               </li>
               {/* <!-- Services --> */}
               <li class="translate-underline__hover-line__dark group/item relative xl:w-[103px]">
-                <a
+                <Link
                   href="/services"
                   aria-label="services page"
                   class="flex items-center gap-[10px] transition-all hover:text-lightDarkGrey active:text-main"
@@ -83,299 +96,328 @@ export default component$(() => {
                       />
                     </svg>{" "}
                   </span>
-                </a>
+                </Link>
 
                 {/* <!--  BEGIN: popup-services-01 hidden --> */}
 
-                <div class="invisible z-10 opacity-0 transition-all group-hover/item:visible group-hover/item:opacity-100">
-                  <div class="absolute left-0 top-[20px] flex justify-center pt-[34px]">
-                    {/* <!-- dropdown__wrapper --> */}
-                    <div class="dropdown__wrapper flex min-w-max cursor-default gap-[106px] rounded-[10px] bg-light px-6 py-[30px] text-dark shadow-2xl">
-                      {/* <!-- dropdown__list --> */}
-                      <ul class="flex flex-col gap-[10px]">
-                        {/* <!-- dropdown__item-01 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">all services</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 02 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">
-                              mobile promotion
-                            </p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 03 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">
-                              digital marketing
-                            </p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 04 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">seo</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 05 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">web design</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                      </ul>
-                      {/* <!-- dropdown__list --> */}
+                <div class="invisible absolute left-0 top-[20px] z-10 flex justify-center pt-[34px] opacity-0 transition-all group-hover/item:visible group-hover/item:opacity-100">
+                  {/* <!-- dropdown__wrapper --> */}
+                  {/* <div class="dropdown__wrapper flex min-w-max cursor-default gap-[106px] rounded-[10px] bg-light px-6 py-[30px] text-dark shadow-2xl"> */}
+                  <div class="rounded-[10px] bg-light px-6 py-[30px] text-dark shadow-2xl">
+                    {/* <!-- dropdown__list --> */}
+                    <ul class="grid grid-flow-col grid-rows-5 gap-[15px_100px] whitespace-nowrap">
+                      {/* <!-- dropdown__item-01 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">all services</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 02 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">mobile promotion</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 03 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">digital marketing</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 04 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">seo</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 05 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">web design</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
 
-                      <ul class="flex flex-col gap-[10px]">
-                        {/* <!-- dropdown__item 06 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link _nav-item-activ translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="ppc"
-                          >
-                            <p class="text-base font-medium">PPC</p>
-                            <span class="p-2 pl-[10px]">
-                              {/* <!-- fill-dark  --> */}
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 07 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">SMM</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 08 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">tiktok</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 09 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">video motion</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                        {/* <!-- 10 --> */}
-                        <li>
-                          <a
-                            class="dropdown__link translate-underline__hover-line__dark flex max-w-fit transition-all hover:text-lightDarkGrey active:text-main"
-                            href="https://dev.uwp.digital/en"
-                            aria-label="smm"
-                          >
-                            <p class="text-base font-medium">branding</p>
-                            <span class="pt-[6px] pl-[10px]">
-                              <svg
-                                fill="currentColor"
-                                width="11"
-                                height="11"
-                                viewBox="0 0 11 11"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  fill-rule="evenodd"
-                                  clip-rule="evenodd"
-                                  d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
-                                ></path>
-                              </svg>
-                            </span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
+                      {/* <!-- dropdown__item 06 --> */}
+                      <li>
+                        <a
+                          class="_nav-item-activ relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="ppc"
+                        >
+                          <p class="text-base font-medium">PPC</p>
+                          <span class="p-2 pl-[10px]">
+                            {/* <!-- fill-dark  --> */}
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 07 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">SMM</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 08 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">tiktok</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 09 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">video motion</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                      {/* <!-- 10 --> */}
+                      <li>
+                        <a
+                          class="relative flex max-w-fit transition-all before:absolute before:-bottom-1 before:right-0
+                          before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+                          before:duration-300 before:content-[''] hover:text-lightDarkGrey hover:before:left-0 hover:before:w-full
+                        active:text-main active:before:bg-main active:before:text-main"
+                          href="https://dev.uwp.digital/en"
+                          aria-label="smm"
+                        >
+                          <p class="text-base font-medium">branding</p>
+                          <span class="pl-[10px] pt-[6px]">
+                            <svg
+                              fill="currentColor"
+                              width="11"
+                              height="11"
+                              viewBox="0 0 11 11"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M7.79202 1.8792H0.664396V0H11V10.3356H9.1208V3.208L1.3288 11L0 9.67122L7.79202 1.8792Z"
+                              ></path>
+                            </svg>
+                          </span>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
+
                 {/* <!--  END: popup-services --> */}
               </li>
               {/* <!-- menu-About us --> */}
               <li>
-                <a href="/about" class="translate-underline__hover-line__dark">
+                <Link
+                  href="/about"
+                  class="translate-underline__hover-line__dark"
+                >
                   About us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog" class="translate-underline__hover-line__dark">
+                <Link
+                  href="/blog"
+                  class="translate-underline__hover-line__dark"
+                >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contact"
                   class="translate-underline__hover-line__dark"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -386,11 +428,11 @@ export default component$(() => {
 
             {/* <!--  BEGIN: buttons-languages-desktop --> */}
             <div class="hidden  xl:block ">
-              <div class="flex items-center pl-[22px] group/item xl:relative xl:pl-[37px] 2xl:pl-[22px]">
+              <div class="group/item flex items-center pl-[22px] xl:relative xl:pl-[37px] 2xl:pl-[22px]">
                 {/* <!--  BEGIN: button-en --> */}
                 <span class="  gap-2.5 rounded-lg p-2.5 transition-all ease-in hover:text-main dark:hover:bg-none lg:flex">
                   <svg
-                    class="w-[32px] h-[23.11px]"
+                    class="h-[23.11px] w-[32px]"
                     width="33"
                     height="24"
                     viewBox="0 0 34 25"
@@ -444,7 +486,7 @@ export default component$(() => {
 
                 {/* <!--  BEGIN: popup-icons-languages hidden -->  */}
 
-                <div class=" z-10  transition-all group-hover/item:visible group-hover/item:opacity-100 opacity-0  invisible   ">
+                <div class=" invisible  z-10 opacity-0 transition-all group-hover/item:visible  group-hover/item:opacity-100   ">
                   <div class="absolute left-[37px] top-[32px] flex justify-center pt-[13px] 2xl:left-[23px]">
                     {/* <!-- dropdown__wrapper --> */}
                     <div
@@ -460,7 +502,7 @@ export default component$(() => {
                             class="language-item  flex items-center gap-[5.5px] rounded-[5px] p-2.5 transition-all ease-in hover:bg-[#4E4E4E]  lg:flex"
                           >
                             <svg
-                              class="w-[32px] h-[23.11px]"
+                              class="h-[23.11px] w-[32px]"
                               width="33"
                               height="24"
                               viewBox="0 0 33 24"
@@ -490,7 +532,7 @@ export default component$(() => {
                             class="language-item  z-20 flex items-center gap-[5.5px] rounded-[5px] p-2.5 transition-all ease-in hover:bg-[#4E4E4E]  lg:flex"
                           >
                             <svg
-                              class="w-[32px] h-[23.11px]"
+                              class="h-[23.11px] w-[32px]"
                               width="33"
                               height="24"
                               viewBox="0 0 33 23"
@@ -536,7 +578,7 @@ export default component$(() => {
                             class="language-item   z-20 flex items-center gap-[5.5px] rounded-[5px] p-2.5 transition-all ease-in hover:bg-[#4E4E4E]  lg:flex"
                           >
                             <svg
-                              class="w-[32px] h-[23.11px]"
+                              class="h-[23.11px] w-[32px]"
                               width="33"
                               height="24"
                               viewBox="0 0 33 24"
@@ -571,7 +613,7 @@ export default component$(() => {
                             class="language-item  flex items-center gap-[5.5px] rounded-[5px] p-2.5 transition-all ease-in hover:bg-[#4E4E4E]  lg:flex"
                           >
                             <svg
-                              class="w-[32px] h-[23.11px]"
+                              class="h-[23.11px] w-[32px]"
                               width="33"
                               height="24"
                               viewBox="0 0 34 25"

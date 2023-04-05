@@ -1,8 +1,9 @@
 import { component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 
 export default component$(() => {
   return (
-    <a href="/" aria-label="homepage" class=" flex h-10 lg:h-12">
+    <Link href="/" aria-label="homepage" class=" flex h-10 lg:h-12">
       <div class="h-10 w-[103px] lg:h-[42px] lg:w-[136px] xl:h-12 xl:w-[121px] 2xl:w-[123px]">
         <svg
           viewBox="0 0 103 41"
@@ -141,6 +142,6 @@ export default component$(() => {
           />
         </svg>
       </div>
-    </a>
+    </Link>
   );
 });
