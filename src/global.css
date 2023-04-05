@@ -29,7 +29,7 @@
 }
 @layer base {
   .container {
-    @apply mx-auto px-5 !max-w-[1920px] lg:px-[30px] 3xl:px-[135px];
+    @apply mx-auto !max-w-[1920px] px-5 lg:px-[30px] 3xl:px-[135px];
   }
   *::selection {
     @apply bg-main text-white;
@@ -134,7 +134,7 @@ STYLES
 ======================================*/
 
   ._nav-item-activ {
-    @apply text-main;
+    @apply !text-main;
   }
 
   /*------------- menu mobile button language ------------*/
@@ -183,19 +183,19 @@ Styles borders  btn
 
   .btn__red {
     @apply flex flex-row items-center justify-center
-        gap-[10px] rounded-[70px] border-[1px] border-main bg-main py-4 px-9
+        gap-[10px] rounded-[70px] border-[1px] border-main bg-main px-9 py-4
         text-base font-bold uppercase  leading-5 text-white;
   }
 
   .btn__red-service {
     @apply flex flex-row items-center justify-center
-        gap-[10px] rounded-[70px] border-[1px] border-main bg-main py-[13px] px-[28px]
+        gap-[10px] rounded-[70px] border-[1px] border-main bg-main px-[28px] py-[13px]
         text-sm font-bold uppercase  leading-[171%] text-white;
   }
 
   .btn__dark-atricle {
     @apply flex flex-row items-center justify-center
-         rounded-[70px] border-[1px]  bg-dark py-[13px] px-[20px]
+         rounded-[70px] border-[1px]  bg-dark px-[20px] py-[13px]
         text-sm font-bold uppercase  leading-[171%] text-white;
   }
 

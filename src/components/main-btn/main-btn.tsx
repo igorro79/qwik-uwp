@@ -9,18 +9,18 @@ export default component$((props: BtnProps) => {
   return (
     <a
       href="#"
-      class={`m-auto flex  w-full relative 
-         items-center justify-center gap-[10px] rounded-full bg-main py-[16px] 
-         text-base font-bold uppercase  hover:text-white transition-all
-        sm:max-w-[357px] overflow-hidden  
+      class={`after:content-['']; relative  m-auto flex 
+         w-full items-center justify-center gap-[10px] overflow-hidden rounded-full 
+         bg-main py-[16px] text-base  font-bold uppercase
+        transition-all after:absolute  
         
-        after:absolute after:left-0 after:top-full after:h-full after:w-full
-        after:rounded-[70px] after:bg-[#DC2D45] after:transition-all after:ease-in after:content-[''];
+        after:left-0 after:top-full after:h-full after:w-full after:rounded-[70px]
+        after:bg-[#DC2D45] after:transition-all after:ease-in hover:scale-105 hover:text-white
  
         hover:after:top-0 hover:after:-z-10
-        hover:scale-105 ${
+        sm:max-w-[357px] ${
           props.transparent
-            ? "border-[2px] border-main bg-transparent text-dark"
+            ? "w-[320px] border-[2px] border-main bg-transparent text-dark"
             : "text-white"
         } ${props.class}`}
     >
