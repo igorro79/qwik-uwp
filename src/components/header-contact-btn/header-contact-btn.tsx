@@ -1,18 +1,25 @@
 import { component$ } from "@builder.io/qwik";
+import { useContext } from "@builder.io/qwik";
+import { IsOpenedContext } from "~/root";
 
 interface BtnProps {
   class?: string;
 }
 
 export default component$((props: BtnProps) => {
+  const isOpened = useContext(IsOpenedContext);
+
   return (
     <button
-      id="btnContact"
+      // id="btnContact"
       type="button"
-      aria-label="Let's talk"
-      class={`flex items-center w-max rounded-full bg-main  p-[12px] 
-      group relative gap-5 uppercase transition-all hover:bg-white border
-       border-main hover:border-dark active:border-main lg:pr-[25px]
+      onClick$={() => {
+        isOpened.form = true;
+      }}
+      aria-label="open form"
+      class={`group relative flex w-max items-center  gap-5 
+      rounded-full border border-main bg-main p-[12px] uppercase transition-all
+       hover:border-dark hover:bg-white active:border-main lg:pr-[25px]
         xl:pr-[20px] 2xl:pr-[25px] ${props.class}`}
     >
       <span
