@@ -101,6 +101,12 @@
     before:duration-200 before:content-['']  hover:text-lightDarkGrey hover:before:left-0
     hover:before:w-full active:text-main active:before:bg-main active:before:text-main;
   }
+
+  /* =========== FORM dynamic ============ */
+  .active-label {
+    @apply -translate-x-3 -translate-y-7;
+  }
+
   /* =========== TOTAL WHITE HEADER ============ */
 
   .header.white-header {
@@ -137,7 +143,7 @@
 
   /* =================  SWIPER ================*/
 
-  .mySwiper-container {
+  /* .mySwiper-container {
     @apply w-full overflow-hidden;
   }
   .mySwiper .swiper-pagination {
@@ -149,12 +155,12 @@
   }
   .mySwiper .swiper-pagination-bullet-active {
     @apply bg-main;
-  }
+  } */
   /* -----------blog swiper main page---------- */
 
-  .blogSwiper .swiper-slide {
+  /* .blogSwiper .swiper-slide {
     @apply w-auto;
-  }
+  } */
 
   /*=====================================
 STYLES 
@@ -190,7 +196,7 @@ STYLES
   } */
 
   /*============== 404 page =============== */
-  .nopage__button:hover ~ div {
+  /* .nopage__button:hover ~ div {
     @apply text-main;
   }
   .nopage__button:hover ~ #back-home {
@@ -198,10 +204,10 @@ STYLES
   }
   .nopage__button:hover ~ #not-found {
     @apply invisible opacity-0;
-  }
+  } */
 
   /*=== submit button spunner === */
-  .spinner_ajPY {
+  /* .spinner_ajPY {
     transform-origin: center;
     animation: spinner 0.75s infinite linear;
   }
@@ -209,10 +215,10 @@ STYLES
     100% {
       transform: rotate(360deg);
     }
-  }
+  } */
 
   /*------ filter button ----- */
-  .category__filter-btn {
+  /* .category__filter-btn {
     @apply flex gap-2 rounded-[40px] border border-transparent bg-lightGrey px-4 py-[11px] text-sm uppercase leading-[1.2]
      transition-all hover:bg-dark hover:text-white active:border-main dark:border-lightGrey dark:text-dark dark:hover:text-white;
   }
@@ -222,12 +228,5 @@ STYLES
 
   section.carusel-total-white {
     @apply bg-light text-dark dark:bg-dark dark:text-white;
-  }
-
-  .to-animate {
-    @apply translate-y-10 opacity-0 transition duration-1000 ease-out;
-  }
-  .to-animate.in-view {
-    @apply translate-y-0 opacity-100;
-  }
+  } */
 }

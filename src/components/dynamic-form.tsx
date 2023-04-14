@@ -1,12 +1,21 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useStore } from "@builder.io/qwik";
 import { useContext } from "@builder.io/qwik";
 import { IsOpenedContext } from "~/root";
 
-export default component$(() => {
+import CategoryCheckbox from "~/components/tag-input";
 
-  
-const categories = [{name:'category', value: 'branding', label: 'branding'}, 'DIGITAL MARKETING', 'WEB design', 'smm', "seo"]
-console.log(categories)
+import categories from "~/data/categories.json";
+// list of categories should be loadded from DB on SSR (or remain static ??? languages)
+
+export default component$(() => {
+  const credentials = useStore({
+    username: "",
+    email: "",
+    phone: "",
+    company: "",
+    about: "",
+  });
+
   const isOpened = useContext(IsOpenedContext);
   return (
     <div
@@ -65,123 +74,32 @@ console.log(categories)
           </p>
 
           <form id="dynamicForm" class="pb-20 2xl:mr-[78px]">
-            <div class="mb-6 flex lg:mb-0 lg:mt-0 lg:gap-[11px]">
-              <div class="flex flex-wrap gap-[11px_11px]">
-                {/* <!-- 01-BRANDING --> */}
-
-                <div class="h-[29px] lg:h-[38px]">
-                  <input
-                    class="peer sr-only"
-                    type="checkbox"
-                    id="branding"
-                    name="branding"
-                    value="newsletter"
-                  />
-                  <label
-                    class="btn-hover__white border__rounded btn-hover__white relative cursor-pointer overflow-hidden whitespace-nowrap pb-[6px] pl-[15px] pr-[15px] pt-[6px] text-xs font-medium text-white peer-checked:border-white peer-checked:bg-white peer-checked:text-black lg:text-[14px] lg:leading-[18px]"
-                    for="branding"
-                  >
-                    BRANDING
-                  </label>
-                </div>
-
-                {/* <!-- checkbox-01-BRANDING --> */}
-
-                {/* <!-- 02-DIGITAL MARKETING --> */}
-
-                <div class="h-[29px] lg:h-[38px]">
-                  <input
-                    class="peer sr-only"
-                    type="checkbox"
-                    id="digitalMarketing"
-                    name="digital-marketing"
-                    value="newsletter"
-                  />
-                  <label
-                    class="btn-hover__white border__rounded btn-hover__white relative cursor-pointer overflow-hidden whitespace-nowrap pb-[6px] pl-[11px] pr-[11px] pt-[6px] text-xs font-medium text-white peer-checked:border-white peer-checked:bg-white peer-checked:text-black lg:text-[14px] lg:leading-[18px]"
-                    for="digitalMarketing"
-                  >
-                    DIGITAL MARKETING
-                  </label>
-                </div>
-                {/* <!-- checkbox-02-DIGITAL MARKETING --> */}
-                {/* <!-- 03-WEB design --> */}
-
-                <div class="h-[29px] lg:h-[38px]">
-                  <input
-                    class="peer sr-only"
-                    type="checkbox"
-                    id="webDesign"
-                    name="web-design"
-                    value="newsletter"
-                  />
-                  <label
-                    class="btn-hover__white border__rounded btn-hover__white relative cursor-pointer overflow-hidden whitespace-nowrap pb-[6px] pl-[8px] pr-[8px] pt-[6px] text-xs font-medium uppercase text-white peer-checked:border-white peer-checked:bg-white peer-checked:text-black lg:text-[14px] lg:leading-[18px]"
-                    for="webDesign"
-                  >
-                    WEB design
-                  </label>
-                </div>
-
-                {/* <!-- checkbox-03-WEB design --> */}
-
-                {/* <!-- 04-SMM --> */}
-                <div class="h-[29px] lg:h-[38px]">
-                  <input
-                    class="peer sr-only"
-                    type="checkbox"
-                    id="smm"
-                    name="smm"
-                    value="newsletter"
-                  />
-                  <label
-                    class="btn-hover__white border__rounded btn-hover__white relative cursor-pointer overflow-hidden whitespace-nowrap pb-[6px] pl-[13px] pr-[13px] pt-[6px] text-xs font-medium text-white peer-checked:border-white peer-checked:bg-white peer-checked:text-black lg:text-[14px] lg:leading-[18px]"
-                    for="smm"
-                  >
-                    SMM
-                  </label>
-                </div>
-
-                {/* <!-- checkbox-04-SMM --> */}
-
-                <div class="h-[29px] lg:h-[38px]">
-                  <input
-                    class="peer sr-only"
-                    type="checkbox"
-                    id="seo"
-                    name="seo"
-                    value="newsletter"
-                  />
-                  <label
-                    class="btn-hover__white border__rounded btn-hover__white relative cursor-pointer overflow-hidden whitespace-nowrap pb-[6px] pl-[15px] pr-[15px] pt-[6px] text-xs font-medium text-white peer-checked:border-white peer-checked:bg-white peer-checked:text-black lg:text-[14px] lg:leading-[18px]"
-                    for="seo"
-                  >
-                    SEO
-                  </label>
-                </div>
-                {/* <!-- 05-SEO --> */}
-              </div>
+            <div class="mb-6 flex flex-wrap gap-[11px_11px] lg:mb-[46px]">
+              {categories.map((item, i) => (
+                <CategoryCheckbox key={i} name={item.name} label={item.label} />
+              ))}
             </div>
 
-            <div class="flex flex-col lg:mt-[46px]">
+            <div class="flex flex-col ">
               <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-4">
                 {/* <!-- name --> */}
-                <div class="formControl mb-[15px]">
+                <div class="formControl group relative mb-[15px] ">
                   <input
                     id="username"
                     name="username"
+                    // onInput$={(credentials.username = e.target.value)}
                     autoComplete="off"
                     type="text"
-                    class="_req border__rounded form-control m-0 block w-[100%] rounded-[70px] bg-transparent bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
-                    placeholder="Your name?*"
+                    class="form-control m-0 block  w-full rounded-full border-[1px] border-middleGrey bg-transparent  bg-clip-padding px-[30px] py-5 text-sm font-medium leading-[1.3] tracking-[1px] text-middleGrey transition ease-in-out hover:border-white focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
+                    // placeholder="Your name?*"
                   />
                   <label
                     for="username"
-                    class="pl-[24px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey"
+                    class={`group-focus-within:active-label absolute left-10 top-5 bg-dark px-1  text-sm font-medium leading-[1.3] tracking-[1px] text-middleGrey`}
                   >
                     Your name?*
                   </label>
-                  <p class="_error popup_username ml-[25px] mt-3 hidden text-sm font-medium text-main"></p>
+                  <p class="_error popup_username ml-[25px] mt-3 hidden  text-sm font-medium text-main"></p>
                 </div>
 
                 {/* <!-- email --> */}
@@ -191,7 +109,7 @@ console.log(categories)
                     name="email"
                     autoComplete="off"
                     type="text"
-                    class="_req border__rounded form-control m-0 block w-[100%] rounded-[70px] bg-transparent bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
+                    class="form-control m-0 block w-full rounded-full border-[1px] border-middleGrey bg-transparent  bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out hover:border-white focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
                     placeholder="Your e-mail?*"
                     title="Please provide valid email address valid@email.com"
                   />
@@ -215,7 +133,7 @@ console.log(categories)
                     type="tel"
                     autoComplete="off"
                     title="111 111 1111"
-                    class="_req border__rounded form-control m-0 block w-[100%] rounded-[70px] bg-transparent bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
+                    class="form-control m-0 block     w-full rounded-full border-[1px] border-middleGrey bg-transparent  bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out hover:border-white focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
                     placeholder="Phone number*"
                   />
                   <label
@@ -235,7 +153,7 @@ console.log(categories)
                     autoComplete="off"
                     name="company"
                     type="text"
-                    class="_req border__rounded form-control m-0 block w-[100%] rounded-[70px] bg-transparent bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
+                    class="form-control m-0 block w-full rounded-full border-[1px] border-middleGrey bg-transparent  bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out hover:border-white focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
                     placeholder="Company*"
                   />
                   <label
@@ -257,7 +175,7 @@ console.log(categories)
                   id="message"
                   name="message"
                   type="text"
-                  class="_req border__rounded form-control m-0 block w-[100%] rounded-[70px] bg-transparent bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
+                  class="form-control m-0 block   w-full rounded-full border-[1px] border-middleGrey bg-transparent  bg-clip-padding pb-[11px] pl-[30px] pr-[30px] pt-[28px] text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition ease-in-out hover:border-white focus:border-white focus:text-white focus:shadow-none focus:outline-none focus:outline-0"
                   placeholder="Tell us about your project"
                 />
                 <label

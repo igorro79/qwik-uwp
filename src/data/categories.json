@@ -1,0 +1,11 @@
+[
+  { "name": "branding", "value": "category", "label": "branding" },
+  {
+    "name": "DIGITAL MARKETING",
+    "value": "category",
+    "label": "DIGITAL MARKETING"
+  },
+  { "name": "WEB design", "value": "category", "label": "WEB design" },
+  { "name": "seo", "value": "category", "label": "seo" },
+  { "name": "smm", "value": "category", "label": "smm" }
+]

@@ -22,12 +22,14 @@ export const IsOpenedContext = createContextId<GenericType>(
 );
 
 export default component$(() => {
-  const globalState = useStore({ menu: false, form: false, submenu: false });
+  const globalState = useStore({ menu: false, form: true, submenu: false });
   useContextProvider(IsOpenedContext, globalState);
 
   useTask$(({ track }) => {
     track(globalState);
-    if(globalState.form === true && globalState.menu === true) {globalState.menu = false}
+    if (globalState.form === true && globalState.menu === true) {
+      globalState.menu = false;
+    }
     if (globalState.menu === false && globalState.submenu === true) {
       globalState.submenu = false;
     }
