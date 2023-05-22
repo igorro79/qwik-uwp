@@ -4,12 +4,16 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import VideoSection from "~/components/video-section";
 import HeroSection from "~/components/hero-section";
 import MainBtn from "~/components/main-btn/main-btn";
+import Agency from "~/widgets/agency";
+import OurCase from "~/widgets/agency/our-case";
 
 export default component$(() => {
   return (
     <>
       <HeroSection />
       <VideoSection />
+      <Agency />
+      <OurCase/>
       <div class="container  flex flex-col gap-5">
         <MainBtn transparent={true}>read more</MainBtn>
         <MainBtn>
