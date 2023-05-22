@@ -1,17 +1,18 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-import VideoSection from "~/components/video-section";
+// import VideoSection from "~/components/video-section";
 import HeroSection from "~/components/hero-section";
 import MainBtn from "~/components/main-btn/main-btn";
+import TransparentBtn from "~/components/transparent-btn/transparent-btn";
 
 export default component$(() => {
   return (
     <>
       <HeroSection />
-      <VideoSection />
+      {/* <VideoSection /> */}
       <div class="container  flex flex-col gap-5">
-        <MainBtn transparent={true}>read more</MainBtn>
+        <TransparentBtn>read more</TransparentBtn>
         <MainBtn>
           All Cases
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
