@@ -1,229 +1,126 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$, z } from "@builder.io/qwik-city";
-import {
-  email,
-  type InitialValues,
-  minLength,
-  required,
-  useForm,
-} from "@modular-forms/qwik";
+// email, minLength, required,
+import { useForm, zodForm$ } from "@modular-forms/qwik";
 import { TextInput } from "~/components/form/TextInput";
-// import { Form } from "@builder.io/qwik-city";
-import { useContext } from "@builder.io/qwik";
-import { IsOpenedContext } from "~/root";
+import { FileInput } from "~/components/form/FileInput";
+// import { useContext } from "@builder.io/qwik";
+// import { IsOpenedContext } from "~/root";
 import CategoryCheckbox from "~/components/tag-input";
+
+import {
+  type ContactForm,
+  useContactFormLoader,
+  formSchema,
+} from "~/routes/layout";
 
 import categories from "~/data/categories.json";
 // list of categories should be loadded from DB on SSR (or remain static ??? languages)
 
-const formSchema = z.object({
-  username: z.string().nonempty(),
-  email: z.string().email("This is not a valid email.").nonempty(),
-  phone: z.string().min(8, { message: "This field min length 8." }), // phone length
-  company: z.string().nonempty(),
-  about: z.string(),
-  //   file: z.custom<File>(),
-});
-
-// Note: you can also use z.input
-// since Zod supports data transformation.
-export type DynamicForm = z.infer<typeof formSchema>;
-
-export const useDynamicFormLoader = routeLoader$<InitialValues<DynamicForm>>(
-  () => ({
-    username: "",
-    email: "",
-    phone: "",
-    company: "",
-    about: "",
-  })
-);
-
 export default component$(() => {
-  const globalState = useContext(IsOpenedContext);
-  const [dynamicForm, { Form, Field }] = useForm<DynamicForm>({
-    loader: useDynamicFormLoader(),
+  const [, { Form, Field }] = useForm<ContactForm>({
+    loader: useContactFormLoader(),
+    validate: zodForm$(formSchema),
   });
 
   return (
-    <div
-      id="formMenu"
-      class={`custom__scrollbar absolute right-0 top-0 z-40 h-full w-full overflow-y-auto 
-      ${!globalState.form && "invisible opacity-0"}`}
+    <Form
+      class="pb-20 2xl:mr-[78px]"
+      onSubmit$={(values) => {
+        console.log(values);
+      }}
     >
-      {/* <!-- backdrop-block   --> */}
-      <div class="wrapper-form-tablet absolute right-0 top-0 w-full">
-        <div
-          id="backdrop_02"
-          class="absolute left-0 right-0 top-0 bg-main/70 backdrop-blur-xl xl:h-full xl:min-h-screen xl:w-full"
-        >
-          <div class="h-full w-full"></div>
+      <div class="mb-6 flex flex-wrap gap-[11px_11px] lg:mb-[46px]">
+        {categories.map((item, i) => (
+          <CategoryCheckbox key={i} name={item.name} label={item.label} />
+        ))}
+      </div>
+
+      <div class="flex flex-col ">
+        <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-4">
+          {/* <!-- name --> */}
+          <Field name="username">
+            {(field, props) => (
+              <TextInput
+                {...props}
+                value={field.value}
+                error={field.error}
+                type="text"
+                label="Username"
+                required
+              />
+            )}
+          </Field>
+          {/* <!-- email --> */}
+          <Field name="email">
+            {(field, props) => (
+              <TextInput
+                {...props}
+                value={field.value}
+                error={field.error}
+                type="email"
+                label="Email"
+                // placeholder="email"
+                required
+              />
+            )}
+          </Field>
+          {/* <!-- end-email --> */}
+          {/* <!-- phone --> */}
+          <Field name="phone">
+            {(field, props) => (
+              <TextInput
+                {...props}
+                value={field.value}
+                error={field.error}
+                type="tel"
+                label="phone"
+                required
+              />
+            )}
+          </Field>
+          {/* <!-- phone --> */}
+          {/* <!-- company --> */}
+          <Field name="company">
+            {(field, props) => (
+              <TextInput
+                {...props}
+                value={field.value}
+                error={field.error}
+                type="text"
+                label="company name"
+                required
+              />
+            )}
+          </Field>
+
+          {/* <!-- end-company --> */}
         </div>
 
-        {/* <!-- wrapper-form --> */}
-        <div
-          id="dynamicFormWrapper"
-          class={`relative right-0 ml-auto h-full min-h-screen w-full translate-x-full bg-dark pb-[38px] pl-[20px] pr-[20px] pt-[31px] transition-all lg:px-[30px] lg:pb-[312px] lg:pt-[24px] xl:w-[56.7%] xl:flex-auto xl:pl-[30px] xl:pr-[60px] xl:pt-[44px] 2xl:pl-[140px] 2xl:pr-[60px] 2xl:pt-[44px]      ${
-            globalState.form && "!translate-x-0"
-          }`}
-        >
-          {/* <!-- BEGIN:  btn-form-menu --> */}
-
-          <button
-            // id="btnFormMenu"
-            onClick$={() => (globalState.form = false)}
-            aria-label="close form"
-            class="border__rounded group right-5 ml-auto flex rounded-full pb-[8px] pl-[15px] pr-[15px] pt-[8px] hover:bg-white lg:px-[28px] xl:right-[60px]"
-            type="button"
-          >
-            <svg
-              class="fill-white group-hover:fill-black"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M2.84766 0.814453L23.1853 21.1521L21.1516 23.1859L0.813887 2.84822L2.84766 0.814453Z" />
-              <path d="M0.813965 21.1523L21.1517 0.814654L23.1854 2.84842L2.84773 23.1861L0.813965 21.1523Z" />
-            </svg>
-          </button>
-
-          <h2 class="z-10 mb-[30px] mt-[20px] text-4xl font-bold uppercase leading-[43px] text-white lg:mb-[24px] lg:mt-[32px] lg:leading-[39px] xl:text-[36px] xl:leading-[70px] 2xl:text-[64px]">
-            Låt oss diskutera projektet
-          </h2>
-
-          <h3 class="mb-[38px] text-sm font-medium leading-[15px] tracking-[1px] text-middleGrey">
-            Get a detailed and clear commercial proposal
-          </h3>
-
-          <p class="mb-[21px] text-xs font-bold leading-[13px] tracking-[1px] text-middleGrey">
-            I am interested in
-          </p>
-          {/* id="dynamicForm" */}
-          <Form
-            class="pb-20 2xl:mr-[78px]"
-            onSubmit$={(values) => {
-              console.log(values);
-            }}
-          >
-            <div class="mb-6 flex flex-wrap gap-[11px_11px] lg:mb-[46px]">
-              {categories.map((item, i) => (
-                <CategoryCheckbox key={i} name={item.name} label={item.label} />
-              ))}
-            </div>
-
-            <div class="flex flex-col ">
-              <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-4">
-                {/* <!-- name --> */}
-                <Field
-                  name="username"
-                  validate={[
-                    required("Please enter your name."),
-                    minLength(
-                      2,
-                      "You password must have 2 characters or more."
-                    ),
-                  ]}
-                >
-                  {(field, props) => (
-                    <TextInput
-                      {...props}
-                      value={field.value}
-                      error={field.error}
-                      type="text"
-                      label="Username"
-                      required
-                    />
-                  )}
-                </Field>
-                {/* <!-- email --> */}
-                <Field
-                  name="email"
-                  validate={[
-                    required("Please enter your email."),
-                    email("The email address is badly formatted."),
-                  ]}
-                >
-                  {(field, props) => (
-                    <TextInput
-                      {...props}
-                      value={field.value}
-                      error={field.error}
-                      type="email"
-                      label="Email"
-                      // placeholder="email"
-                      required
-                    />
-                  )}
-                </Field>
-                {/* <!-- end-email --> */}
-                {/* <!-- phone --> */}
-                <Field
-                  name="phone"
-                  validate={[
-                    required("Please enter your email."),
-                    email("The email address is badly formatted."),
-                  ]}
-                >
-                  {(field, props) => (
-                    <TextInput
-                      {...props}
-                      value={field.value}
-                      error={field.error}
-                      type="tel"
-                      label="phone"
-                      // placeholder="email"
-                      required
-                    />
-                  )}
-                </Field>
-                {/* <!-- phone --> */}
-                {/* <!-- company --> */}
-                <Field
-                  name="company"
-                  validate={[
-                    required("Please enter company name."),
-                    minLength(2, "Must have 2 characters or more."),
-                  ]}
-                >
-                  {(field, props) => (
-                    <TextInput
-                      {...props}
-                      value={field.value}
-                      error={field.error}
-                      type="text"
-                      label="company name"
-                      required
-                    />
-                  )}
-                </Field>
-                {/* <!-- company --> */}
-                {/* <!-- end-company --> */}
-              </div>
-
-              {/* <!-- message --> */}
-              <Field
-                name="message"
-                validate={[
-                  required("Please enter your name."),
-                  minLength(2, "You password must have 2 characters or more."),
-                ]}
-              >
-                {(field, props) => (
-                  <TextInput
-                    {...props}
-                    value={field.value}
-                    error={field.error}
-                    type="text"
-                    label="message"
-                    required
-                  />
-                )}
-              </Field>
-              {/* <!-- message --> */}
-
-              <div class="add__file group flex w-[150px] flex-row items-center gap-[10px]">
+        {/* <!-- message --> */}
+        <Field name="message">
+          {(field, props) => (
+            <TextInput
+              {...props}
+              value={field.value}
+              error={field.error}
+              type="text"
+              label="message"
+              required
+            />
+          )}
+        </Field>
+        {/* <!-- message --> */}
+        <Field name="file" type="File">
+          {(field, props) => (
+            <FileInput
+              {...props}
+              value={field.value}
+              error={field.error}
+              label="File item"
+            />
+          )}
+        </Field>
+        {/* <div class="add__file group flex w-[150px] flex-row items-center gap-[10px]">
                 <label
                   class="label-file flex h-[38px] w-[38px] cursor-pointer items-center justify-center rounded-full bg-bgColorBtnForm transition-all group-hover:bg-main"
                   for="upload"
@@ -253,70 +150,67 @@ export default component$(() => {
                 <p class="cursor-pointer text-sm font-medium leading-[18px] tracking-[1px] text-middleGrey transition-all group-hover:text-main">
                   Bifoga en fil
                 </p>
-              </div>
+              </div> */}
 
-              <div class="lg:flex lg:justify-between">
-                <div class="lg:w-[367px]">
-                  <p class="py-[24px] text-xs font-medium leading-4 text-middleGrey lg:pb-0">
-                    Genom att klicka på knappen "Skicka" samtycker du till
-                    behandling av personuppgifter.
-                    <a
-                      class="pl-[10px] text-xs font-medium leading-4 text-mainTextBlue underline hover:text-linkActive active:text-linkActive"
-                      href="#"
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label="read-more"
-                    >
-                      Fler detaljer
-                    </a>
-                  </p>
-                </div>
+        <div class="lg:flex lg:justify-between">
+          <div class="lg:w-[367px]">
+            <p class="py-[24px] text-xs font-medium leading-4 text-middleGrey lg:pb-0">
+              Genom att klicka på knappen "Skicka" samtycker du till behandling
+              av personuppgifter.
+              <a
+                class="pl-[10px] text-xs font-medium leading-4 text-mainTextBlue underline hover:text-linkActive active:text-linkActive"
+                href="#"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="read-more"
+              >
+                Fler detaljer
+              </a>
+            </p>
+          </div>
 
-                <div class="group">
-                  <button
-                    id="submit"
-                    type="submit"
-                    aria-label="submit"
-                    class="btn__red w-full transition-all group-hover:border-white group-hover:bg-white group-hover:text-black group-active:text-main lg:w-auto"
-                    value="Submit"
-                  >
-                    Skicka
-                    <svg
-                      class="fill-white transition-all group-hover:fill-black group-active:fill-main"
-                      width="14"
-                      height="16"
-                      viewBox="0 0 14 16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d=" M11.6083 4.87452L11.6083 14.594L14 14.594L14 0.499999L0.84559 0.5L0.84559 3.06255L9.91709 3.06255L1.82814e-06 13.688L1.69118 15.5L11.6083 4.87452Z"
-                      />
-                    </svg>
-                    <svg
-                      width="24"
-                      class="hidden fill-white transition-all group-hover:fill-black group-active:fill-main"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-                        opacity=".25"
-                      />
-                      <path
-                        d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
-                        class="spinner_ajPY"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Form>
+          <div class="group">
+            <button
+              id="submit"
+              type="submit"
+              aria-label="submit"
+              class="btn__red w-full transition-all group-hover:border-white group-hover:bg-white group-hover:text-black group-active:text-main lg:w-auto"
+              value="Submit"
+            >
+              Skicka
+              <svg
+                class="fill-white transition-all group-hover:fill-black group-active:fill-main"
+                width="14"
+                height="16"
+                viewBox="0 0 14 16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d=" M11.6083 4.87452L11.6083 14.594L14 14.594L14 0.499999L0.84559 0.5L0.84559 3.06255L9.91709 3.06255L1.82814e-06 13.688L1.69118 15.5L11.6083 4.87452Z"
+                />
+              </svg>
+              <svg
+                width="24"
+                class="hidden fill-white transition-all group-hover:fill-black group-active:fill-main"
+                height="24"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+                  opacity=".25"
+                />
+                <path
+                  d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+                  class="spinner_ajPY"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Form>
   );
 });

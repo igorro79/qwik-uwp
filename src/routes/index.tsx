@@ -5,6 +5,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import HeroSection from "~/components/hero-section";
 import MainBtn from "~/components/main-btn/main-btn";
 import TransparentBtn from "~/components/transparent-btn/transparent-btn";
+// import NewForm from "~/widgets/dynamicContactForm";
 
 export default component$(() => {
   return (

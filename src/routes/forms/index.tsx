@@ -1,41 +1,11 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$, z } from "@builder.io/qwik-city";
-import {
-  email,
-  type InitialValues,
-  minLength,
-  required,
-  useForm,
-} from "@modular-forms/qwik";
+
+import { email, minLength, required, useForm } from "@modular-forms/qwik";
 import { TextInput } from "~/components/form/TextInput";
-
-const formSchema = z.object({
-  username: z.string().nonempty(),
-  email: z.string().email("This is not a valid email.").nonempty(),
-  phone: z.string().min(8, { message: "This field min length 8." }), // phone length
-  company: z.string().nonempty(),
-  about: z.string(),
-  //   file: z.custom<File>(),
-});
-
-// Note: you can also use z.input
-// since Zod supports data transformation.
-export type DynamicForm = z.infer<typeof formSchema>;
-
-export const useDynamicFormLoader = routeLoader$<InitialValues<DynamicForm>>(
-  () => ({
-    username: "",
-    email: "",
-    phone: "",
-    company: "",
-    about: "",
-  })
-);
-
+import { type ContactForm, useContactFormLoader } from "~/routes/layout";
 export default component$(() => {
-  // Use login form
-  const [dynamicForm, { Form, Field }] = useForm<DynamicForm>({
-    loader: useDynamicFormLoader(),
+  const [, { Form, Field }] = useForm<ContactForm>({
+    loader: useContactFormLoader(),
   });
 
   return (
@@ -61,7 +31,6 @@ export default component$(() => {
               type="text"
               label="Username"
               required
-              
             />
           )}
         </Field>
@@ -81,7 +50,6 @@ export default component$(() => {
               label="Email"
               // placeholder="email"
               required
-             
             />
           )}
         </Field>
