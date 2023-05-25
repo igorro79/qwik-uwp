@@ -1,13 +1,43 @@
-import { component$ } from "@builder.io/qwik";
+import { component$} from "@builder.io/qwik";
+// import { QwikPicture } from 'qwik';
+// import HeroImage from '../../../public/hero/outdoors.jpg';
 import MainBtn from "~/components/main-btn/main-btn";
+// import { Image } from 'qwik-image';
+// import { Image, ImageTransformerProps, useImageProvider } from 'qwik-image';
+// import { Image } from '@unpic/qwik';
 
-// const myLoader = ({ src, width, quality }) => {
+// import { providers, selectedProvider } from '../../providers';
+//   const myLoader = ({ src, width, quality }) => {
 //   return `https://example.com/${src}?w=${width}&q=${quality || 75}`
 // }
 
+//   const myLoader = ({ src, width, quality }) => {
+//   return `${src}?w=${width}&q=${quality || 75}`
+// }
+
+
 export default component$(() => {
+
+  // const imageTransformer$ = $(
+	// 	({ src, width, height }: ImageTransformerProps): string => {
+  //     // Here you can set your favourite image loaders service
+	// 		return `https://cdn.builder.io/api/v1/${src}?height=${height}&width=${width}}&format=webp&fit=fill`;
+	// 	}
+  // );
+  
+
+  //   // Global Provider (required)
+	// useImageProvider({
+  //   // You can set this prop to overwrite default values [3840, 1920, 1280, 960, 640]
+  //   resolutions: [640],
+	// 	imageTransformer$,
+  // });
+  
+
+
   return (
-    //   achievements pt-1
+
+   
     <section class=" bg-light pb-[82px]  text-dark dark:bg-dark dark:text-white lg:pb-[90px] xl:pb-[172px] xl:pt-10">
       <div class="container sm:max-w-full lg:px-[30px] 3xl:max-w-[1920px] 3xl:px-[135px]">
         <h2
@@ -29,7 +59,6 @@ export default component$(() => {
           up Google ads, and Facebook ads, or get more followers on Instagram -
           welcome to UWP Digital.
         </p>
-
         {/* <!--  wrapper-desktop-3-col --> */}
         {/* wrapper_01 xl:gap-[29px] 2xl:gap-[44px] xl:justify-between*/}
 
@@ -52,59 +81,109 @@ export default component$(() => {
                   <div class="absolute left-0 top-0 z-[1] h-full w-[80%] bg-gradient-to-r from-[rgba(0,0,0,0.64)]"></div>
 
                   {/* <!-- img-01 --> */}
-                  {/* <picture class="group/card">
+                  <picture class="group/card">
                         <source
                           media="(max-width:819px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
                         />
                         <source
                           media="(min-width:820px) and (max-width:1279px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-01.jpg    1x,
-                            ./src/images/content/main-content-548x493-01@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-01.jpg    1x,
+                            /images/content/main-content-548x493-01@2x.jpg 2x
                           "
                         />
 
                         <source
                           media="(min-width:1280px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-01.jpg    1x,
-                            ./src/images/content/main-content-548x493-01@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-01.jpg    1x,
+                            /images/content/main-content-548x493-01@2x.jpg 2x
                           "
                         />
 
                         <img
                           class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
-                          src="./src/images/content/main-content-mobile-01-320x250.jpg"
+                          src="/images/content/main-content-mobile-01-320x250.jpg"
                           alt="Cube in hands"
                           loading="lazy"
                         />
-                      </picture> */}
-                  <img
+                  </picture>
+                  
+                  {/* <HeroImage/> */}
+                  {/* <Image
+                  loader={myLoader}
+                  src="me.png"
+                  alt="Picture of the author"
+                  width={500}
+                    height={500}
+                  /> */}
+                  
+                  {/* <img
                     class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
                     src="/images/content/main-content-548x493-01.jpg"
                     alt="Cube in hands"
                     loading="lazy"
-                  />
+                  /> */}
 
                   {/* <Image
       loader={myLoader}
-      src="me.png"
+      src="/images/content/main-content-548x493-01.jpg"
       alt="Picture of the author"
       width={500}
       height={500}
-    /> */}
+                  /> */}
+                  
+                  {/* <Image
+                  
+                  src="https://cdn.shopify.com/static/sample-images/bath_grande_crop_center.jpeg"
+      layout="constrained"
+      width={800}
+      height={600}
+                    alt="A lovely bath"
+                  /> */}
 
+                  {/* <Image
+                    layout='constrained'
+                    objectFit='fill'
+                    width={400}
+                    height={500}
+                    alt='Tropical paradise'
+                    placeholder='#e6e6e6'
+                    src={
+                      'image/assets%2FYJIGb4i01jvw0SRdL5Bt%2Fe5113e1c02db40e5bac75146fa46386f'
+                    }
+                  /> */}
+                  
+
+                  {/* <Image
+                  layout="fixed"
+                  objectFit="cover"
+                  width="300"
+                  height="300"
+                  src={...}
+                  alt={...}
+                  placeholder={...}
+                /> */}
+
+                  {/* <Image
+                    width={400}
+                    height={400}
+                    style={{ border: '2px solid red' }}
+                    placeholder="#e6e6e6"
+                    layout="constrained"
+                    src="/images/content/main-content-548x493-01.jpg"
+                  /> */}
                   {/* <!-- text-above-image --> */}
                   <div class="img-desc group/scale">
                     <div class="img-desc__wrap">
@@ -189,51 +268,51 @@ export default component$(() => {
                   <div class="absolute left-0 top-0 z-[1] h-full w-[80%] bg-gradient-to-r from-[rgba(0,0,0,0.64)]"></div>
 
                   {/* <!-- img-02 --> */}
-                  {/* <picture>
+                  <picture>
                         <source
                           media="(max-width:819px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
                         />
                         <source
                           media="(min-width:820px) and (max-width:1279px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-02.jpg,
-                            ./src/images/content/main-content-548x493-02@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-02.jpg,
+                            /images/content/main-content-548x493-02@2x.jpg 2x
                           "
                         />
 
                         <source
                           media="(min-width:1280px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-02.jpg,
-                            ./src/images/content/main-content-548x493-02@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-02.jpg,
+                            /images/content/main-content-548x493-02@2x.jpg 2x
                           "
                         />
 
                         <img
                           class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
-                          src="./src/images/content/main-content-mobile-01-320x250.jpg"
+                          src="/images/content/main-content-mobile-01-320x250.jpg"
                           alt="Cube in hands"
                           loading="lazy"
                         />
-                      </picture> */}
+                      </picture>
 
-                  <img
+                  {/* <img
                     class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
                     src="/images/content/main-content-548x493-02.jpg"
                     alt="Cube in hands"
                     loading="lazy"
-                  />
+                  /> */}
 
                   {/* <!-- text-img --> */}
                   <div class="img-desc group/scale">
@@ -315,51 +394,51 @@ export default component$(() => {
                   <div class="absolute left-0 top-0 z-[1] h-full w-[80%] bg-gradient-to-r from-[rgba(0,0,0,0.64)]"></div>
 
                   {/* <!-- img-03 --> */}
-                  {/* <picture class="group/card">
+                  <picture class="group/card">
                         <source
                           media="(max-width:819px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
                         />
                         <source
                           media="(min-width:820px) and (max-width:1279px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-03.jpg,
-                            ./src/images/content/main-content-548x493-03@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-03.jpg,
+                            /images/content/main-content-548x493-03@2x.jpg 2x
                           "
                         />
 
                         <source
                           media="(min-width:1280px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-03.jpg,
-                            ./src/images/content/main-content-548x493-03@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-03.jpg,
+                            /images/content/main-content-548x493-03@2x.jpg 2x
                           "
                         />
 
                         <img
                           class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
-                          src="./src/images/content/main-content-mobile-01-320x250.jpg"
+                          src="/images/content/main-content-mobile-01-320x250.jpg"
                           alt="Cube in hands"
                           loading="lazy"
                         />
-                      </picture> */}
+                      </picture>
 
-                  <img
+                  {/* <img
                     class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
                     src="/images/content/main-content-548x493-03.jpg"
                     alt="Cube in hands"
                     loading="lazy"
-                  />
+                  /> */}
 
                   {/* <!-- text-above-image --> */}
                   <div class="img-desc group/scale">
@@ -444,51 +523,51 @@ export default component$(() => {
                   <div class="absolute left-0 top-0 z-[1] h-full w-[80%] bg-gradient-to-r from-[rgba(0,0,0,0.64)]"></div>
 
                   {/* <!-- img --> */}
-                  {/* <picture>
+                  <picture>
                         <source
                           media="(max-width:819px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
                         />
                         <source
                           media="(min-width:820px) and (max-width:1279px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-04.jpg,
-                            ./src/images/content/main-content-548x493-04@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-04.jpg,
+                            /images/content/main-content-548x493-04@2x.jpg 2x
                           "
                         />
 
                         <source
                           media="(min-width:1280px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-04.jpg,
-                            ./src/images/content/main-content-548x493-04@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-04.jpg,
+                            /images/content/main-content-548x493-04@2x.jpg 2x
                           "
                         />
 
                         <img
                           class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
-                          src="./src/images/content/main-content-mobile-01-320x250.jpg"
+                          src="/images/content/main-content-mobile-01-320x250.jpg"
                           alt="Cube in hands"
                           loading="lazy"
                         />
-                      </picture> */}
+                      </picture>
 
-                  <img
+                  {/* <img
                     class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
                     src="/images/content/main-content-548x493-04.jpg"
                     alt="Cube in hands"
                     loading="lazy"
-                  />
+                  /> */}
 
                   {/* <!-- text-img --> */}
                   <div class="img-desc group/scale">
@@ -572,50 +651,50 @@ export default component$(() => {
                   <div class="absolute left-0 top-0 z-[1] h-full w-[80%] bg-gradient-to-r from-[rgba(0,0,0,0.64)]"></div>
 
                   {/* <!-- img-05 --> */}
-                  {/* <picture class="group/card">
+                  <picture class="group/card">
                         <source
                           media="(max-width:819px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
                         />
                         <source
                           media="(min-width:820px) and (max-width:1279px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-05.jpg,
-                            ./src/images/content/main-content-548x493-05@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-05.jpg,
+                            /images/content/main-content-548x493-05@2x.jpg 2x
                           "
                         />
 
                         <source
                           media="(min-width:1280px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-05.jpg,
-                            ./src/images/content/main-content-548x493-05@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-05.jpg,
+                            /images/content/main-content-548x493-05@2x.jpg 2x
                           "
                         />
 
                         <img
                           class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
-                          src="./src/images/content/main-content-mobile-01-320x250.jpg"
+                          src="/images/content/main-content-mobile-01-320x250.jpg"
                           alt="Cube in hands"
                           loading="lazy"
                         />
-                      </picture> */}
-                  <img
+                      </picture>
+                  {/* <img
                     class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
                     src="/images/content/main-content-548x493-05.jpg"
                     alt="Cube in hands"
                     loading="lazy"
-                  />
+                  /> */}
 
                   {/* <!-- text-above-image --> */}
                   <div class="img-desc group/scale">
@@ -702,50 +781,50 @@ export default component$(() => {
                   <div class="absolute left-0 top-0 z-[1] h-full w-[80%] bg-gradient-to-r from-[rgba(0,0,0,0.64)]"></div>
 
                   {/* <!-- img-06 --> */}
-                  {/* <picture>
+                  <picture>
                         <source
                           media="(max-width:819px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
                         />
                         <source
                           media="(min-width:820px) and (max-width:1279px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-01.jpg,
-                            ./src/images/content/main-content-548x493-01@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-01.jpg,
+                            /images/content/main-content-548x493-01@2x.jpg 2x
                           "
                         />
 
                         <source
                           media="(min-width:1280px)"
                           type="image/jpg"
-                          srcset="
-                            ./src/images/content/main-content-548x493-01.jpg,
-                            ./src/images/content/main-content-548x493-01@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-548x493-01.jpg,
+                            /images/content/main-content-548x493-01@2x.jpg 2x
                           "
                         />
 
                         <img
                           class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
-                          srcset="
-                            ./src/images/content/main-content-mobile-01-320x250.jpg    1x,
-                            ./src/images/content/main-content-mobile-01-320x250@2x.jpg 2x
+                          srcSet="
+                            /images/content/main-content-mobile-01-320x250.jpg    1x,
+                            /images/content/main-content-mobile-01-320x250@2x.jpg 2x
                           "
-                          src="./src/images/content/main-content-mobile-01-320x250.jpg"
+                          src="/images/content/main-content-mobile-01-320x250.jpg"
                           alt="Cube in hands"
                           loading="lazy"
                         />
-                      </picture> */}
-                  <img
+                      </picture>
+                  {/* <img
                     class="duration-250 inset-0 h-auto w-full object-cover transition ease-out group-hover/scale:scale-105 group-hover/scale:ease-in"
                     src="/images/content/main-content-548x493-01.jpg"
                     alt="Cube in hands"
                     loading="lazy"
-                  />
+                  /> */}
 
                   {/* <!-- text-img --> */}
                   <div class="img-desc group/scale">

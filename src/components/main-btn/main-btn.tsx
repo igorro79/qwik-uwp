@@ -20,7 +20,7 @@ export default component$((props: BtnProps) => {
         hover:after:top-0 hover:after:-z-10
         sm:max-w-[357px] xl:sticky xl:top-[100px] xl:mt-0 ${
           props.transparent
-            ? "w-[320px] border-[2px] border-main bg-transparent text-dark"
+            ? "w-[320px] border-[2px] border-main bg-transparent text-dark dark:text-white  pointer-events-auto "
             : "text-white"
         } ${props.class}`}
     >
