@@ -208,7 +208,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden  " transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -300,7 +300,7 @@ export default component$(() => {
                       </a>
                     </div>
 
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -395,7 +395,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -489,7 +489,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -583,7 +583,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -683,7 +683,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -778,7 +778,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -875,7 +875,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
@@ -971,7 +971,7 @@ export default component$(() => {
                     </div>
 
                     {/* btn */}
-                    <MainBtn class="lg:hidden " transparent={true}>
+                    <MainBtn class="lg:hidden mb-5" transparent={true}>
                       read more
                     </MainBtn>
                   </>
