@@ -8,6 +8,7 @@ import Agency from "~/widgets/agency";
 import OurCase from "~/widgets/our-case";
 
 import ServicesSection from "~/widgets/services-section";
+import DiscussSection from "~/widgets/discuss-section";
 
 export default component$(() => {
   return (
@@ -16,7 +17,8 @@ export default component$(() => {
       <VideoSection />
       <Agency />
       <OurCase />
-      <ServicesSection/>
+      <ServicesSection />
+      <DiscussSection/>
       <div class="container  flex flex-col gap-5">
         <MainBtn transparent={true}>read more</MainBtn>
         <MainBtn>
