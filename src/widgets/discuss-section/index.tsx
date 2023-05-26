@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <section class="discuss bg-dark pb-[80px] pt-[62px] lg:pb-[80px] lg:pt-[65px] xl:pb-[41px] xl:pt-[47px] 2xl:pb-[41px] 2xl:pt-[110px]">
       <div class="container sm:max-w-full lg:px-[30px] 3xl:max-w-[1920px] 3xl:px-[135px]">
-        <h2 class="mb-[33px] text-4xl font-bold uppercase leading-[120%] text-light lg:mb-[39px] lg:text-[45px] xl:mb-[15px] xl:text-[49px] xl:leading-[96px] xl:tracking-[0.7px] 2xl:mb-[50px] 2xl:text-[90px] 2xl:leading-[108px]">
+        <h2 class="mb-[33px] text-4xl font-bold uppercase leading-[1.2] text-light lg:mb-[39px] lg:text-[45px] xl:mb-[15px] xl:text-[49px] xl:leading-[96px] xl:tracking-[0.7px] 2xl:mb-[50px] 2xl:text-[90px] 2xl:leading-[108px]">
           Let's discuss the project
         </h2>
         {/* <!-- BEGIN: wrapper-discuss-desctop-3-col --> */}
@@ -23,7 +23,10 @@ export default component$(() => {
             {/* <!-- Carousel wrapper --> */}
             <div class="relative h-[570px] overflow-hidden rounded-lg lg:h-[504px] xl:h-[480px] 2xl:h-[720px]">
               {/*  block-01  */}
-              <div class="hidden duration-700 ease-in-out  bg-dark" data-carousel-item>
+              <div
+                class="hidden bg-dark duration-700  ease-in-out"
+                data-carousel-item
+              >
                 <div
                   class="grid grid-cols-[50%_1fr]  pb-[76px]
                         lg:grid-cols-[40%_1fr]  lg:grid-rows-[auto_80%]  lg:pb-[88px]
@@ -71,13 +74,17 @@ export default component$(() => {
                       />
                     </picture>
 
+                   
+
                     <button
+                      class="swiper-next-slide group absolute bottom-0 left-0 flex h-[39px] w-[39px] translate-y-1/2 items-center justify-center
+                       rounded-full border-0 bg-light p-0 text-center text-white hover:text-main 
+                        lg:bottom-[50px]  lg:left-0 lg:h-[58px] lg:w-[58px] lg:rounded-full 
+                        xl:bottom-[36px] 
+                        2xl:bottom-[0px]     2xl:h-[72px] 2xl:w-[72px]"
                       type="button"
-                                          aria-label="button"
-                                          data-carousel-prev
-                      class="swiper-next-slide group absolute bottom-0 left-0 flex h-[39px] w-[39px] translate-y-1/2 items-center justify-center rounded-full border-0 bg-light p-0 text-center text-white hover:text-main 
-                                lg:bottom-[50px]  lg:left-0 lg:h-[58px] lg:w-[58px] lg:rounded-full
-                                    xl:h-[72px] xl:w-[72px]"
+                      aria-label="button"
+                      data-carousel-prev
                     >
                       <svg
                         class="rounded-full"
@@ -161,8 +168,10 @@ export default component$(() => {
                   <div class="col-start-1 col-end-3 lg:col-start-2 lg:mt-[26px] xl:mt-[15px]">
                     {/* text */}
                     <div class="  lg:grow 2xl:grid 2xl:gap-[115px]">
-                                          <p class="mb-[99px] text-base font-medium leading-[1.39] text-light 
-                      lg:mb-[95px] lg:max-w-[456px] 2xl:max-w-[637px] 2xl:text-2xl ">
+                      <p
+                        class="mb-[99px] text-base font-medium leading-[1.39] text-light 
+                      lg:mb-[95px] lg:max-w-[456px] 2xl:max-w-[637px] 2xl:text-2xl "
+                      >
                         We are a digital marketing agency that opens these
                         opportunities to you. With the help of marketing tools
                         and smart technologies, UWP connects customers with
@@ -202,7 +211,10 @@ export default component$(() => {
               </div>
 
               {/* block-02 */}
-              <div class="hidden duration-700 ease-in-out bg-dark" data-carousel-item>
+              <div
+                class="hidden bg-dark duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <div
                   class="grid grid-cols-[50%_1fr]  pb-[76px]
                     lg:grid-cols-[40%_1fr]  lg:grid-rows-[auto_80%]  lg:pb-[88px]
@@ -251,12 +263,14 @@ export default component$(() => {
                     </picture>
 
                     <button
+                      class="swiper-next-slide group absolute bottom-0 left-0 flex h-[39px] w-[39px] translate-y-1/2 items-center justify-center
+                       rounded-full border-0 bg-light p-0 text-center text-white hover:text-main 
+                                lg:bottom-[50px]  lg:left-0 lg:h-[58px] lg:w-[58px] 
+                               xl:bottom-[36px] 
+                               2xl:bottom-[0px]     2xl:h-[72px] 2xl:w-[72px]"
                       type="button"
-                                          aria-label="button"
-                                           data-carousel-prev
-                      class="swiper-next-slide group absolute bottom-0 left-0 flex h-[39px] w-[39px] translate-y-1/2 items-center justify-center rounded-full border-0 bg-light p-0 text-center text-white hover:text-main 
-                          lg:bottom-[50px]  lg:left-0 lg:h-[58px] lg:w-[58px] lg:rounded-full
-                             xl:h-[72px] xl:w-[72px]"
+                      aria-label="button"
+                      data-carousel-prev
                     >
                       <svg
                         class="rounded-full"
@@ -340,8 +354,10 @@ export default component$(() => {
                   <div class="col-start-1 col-end-3 lg:col-start-2 lg:mt-[26px] xl:mt-[15px]">
                     {/* text */}
                     <div class="  lg:grow 2xl:grid 2xl:gap-[115px]">
-                                          <p class="mb-[99px] text-base font-medium leading-[139%] text-light
-                        lg:mb-[95px] lg:max-w-[456px] 2xl:max-w-[637px] 2xl:text-2xl 2xl:leading-[34px]">
+                      <p
+                        class="mb-[99px] text-base font-medium leading-[139%] text-light
+                        lg:mb-[95px] lg:max-w-[456px] 2xl:max-w-[637px] 2xl:text-2xl 2xl:leading-[34px]"
+                      >
                         We are a digital marketing agency that opens these
                         opportunities to you. With the help of marketing tools
                         and smart technologies, UWP connects customers with
@@ -380,7 +396,10 @@ export default component$(() => {
                 </div>
               </div>
               {/* block-3 */}
-              <div class="hidden duration-700 ease-in-out bg-dark" data-carousel-item>
+              <div
+                class="hidden bg-dark duration-700 ease-in-out"
+                data-carousel-item
+              >
                 <div
                   class="grid grid-cols-[50%_1fr]  pb-[76px]
                     lg:grid-cols-[40%_1fr]  lg:grid-rows-[auto_80%]  lg:pb-[88px]
@@ -430,11 +449,13 @@ export default component$(() => {
 
                     <button
                       type="button"
-                                          aria-label="button"
-                                           data-carousel-prev
-                      class="swiper-next-slide group absolute bottom-0 left-0 flex h-[39px] w-[39px] translate-y-1/2 items-center justify-center rounded-full border-0 bg-light p-0 text-center text-white hover:text-main 
-                          lg:bottom-[50px]  lg:left-0 lg:h-[58px] lg:w-[58px] lg:rounded-full
-                             xl:h-[72px] xl:w-[72px]"
+                      aria-label="button"
+                      data-carousel-prev
+                      class="swiper-next-slide group absolute bottom-0 left-0 flex h-[39px] w-[39px] translate-y-1/2 items-center justify-center
+                       rounded-full border-0 bg-light p-0 text-center text-white hover:text-main 
+                                lg:bottom-[50px]  lg:left-0 lg:h-[58px] lg:w-[58px] 
+                               xl:bottom-[36px] 
+                               2xl:bottom-[0px]     2xl:h-[72px] 2xl:w-[72px]"
                     >
                       <svg
                         class="rounded-full"
@@ -518,8 +539,10 @@ export default component$(() => {
                   <div class="col-start-1 col-end-3 lg:col-start-2 lg:mt-[26px] xl:mt-[15px]">
                     {/* text */}
                     <div class="  lg:grow 2xl:grid 2xl:gap-[115px]">
-                                          <p class="mb-[99px] text-base font-medium leading-[139%] text-light
-                        lg:mb-[95px] lg:max-w-[456px] 2xl:max-w-[637px] 2xl:text-2xl 2xl:leading-[34px]">
+                      <p
+                        class="mb-[99px] text-base font-medium leading-[139%] text-light
+                        lg:mb-[95px] lg:max-w-[456px] 2xl:max-w-[637px] 2xl:text-2xl 2xl:leading-[34px]"
+                      >
                         We are a digital marketing agency that opens these
                         opportunities to you. With the help of marketing tools
                         and smart technologies, UWP connects customers with
@@ -560,24 +583,29 @@ export default component$(() => {
             </div>
 
             {/* <!-- Slider indicators --> */}
-            <div class="absolute bottom-[28px] left-1/2 z-30 flex -translate-x-[50%] space-x-[10px] lg:bottom-[40px] -xl:translate-x-[20%] xl:space-x-[20px] xl:bottom-[78px]">
+            <div
+              class="-xl:translate-x-[20%] absolute bottom-[28px] left-1/2 z-30 flex -translate-x-[50%]
+             space-x-[10px]
+              lg:bottom-[40px] xl:bottom-[20px] xl:space-x-[20px]
+              2xl:bottom-[78px]"
+            >
               <button
                 type="button"
-                class="h-[7px] w-[7px] lg:h-[9px] lg:w-[9px]  xl:h-3 xl:w-3 rounded-full bg-main"
+                class="h-[7px] w-[7px] rounded-full bg-main  lg:h-[9px] lg:w-[9px] xl:h-3 xl:w-3"
                 aria-current="true"
                 aria-label="Slide 1"
                 data-carousel-slide-to="0"
               ></button>
               <button
                 type="button"
-                class="h-[7px] w-[7px] lg:h-[9px] lg:w-[9px] xl:h-3 xl:w-3 rounded-full bg-main"
+                class="h-[7px] w-[7px] rounded-full bg-main lg:h-[9px] lg:w-[9px] xl:h-3 xl:w-3"
                 aria-current="false"
                 aria-label="Slide 2"
                 data-carousel-slide-to="1"
               ></button>
               <button
                 type="button"
-                class="h-[7px] w-[7px] lg:h-[9px] lg:w-[9px] xl:h-3 xl:w-3 rounded-full bg-main"
+                class="h-[7px] w-[7px] rounded-full bg-main lg:h-[9px] lg:w-[9px] xl:h-3 xl:w-3"
                 aria-current="false"
                 aria-label="Slide 3"
                 data-carousel-slide-to="2"

@@ -26,12 +26,14 @@ export default component$(() => {
         <link rel="manifest" href="/manifest.json" />
         <meta name="robots" content="noindex, nofollow" />
 
+        
+   
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+        {/* Added swiperjs. */}
          {/* <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
     /> */}
-   
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
         <RouterHead />
       </head>
       <body lang="en" class="relative min-h-screen bg-light dark:bg-dark">
