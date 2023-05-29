@@ -12,13 +12,12 @@ type InputLabelProps = {
  * Input label for a form field.
  */
 export const InputLabel = component$(
-  ({ name, label, required, margin, inputValue }: InputLabelProps) => (
+  ({ name, label, required }: InputLabelProps) => (
     <>
       {label && (
         <label
-          class={`absolute top-5 pl-[24px] text-sm font-medium
-           leading-[1.3] tracking-[1px] text-middleGrey peer-focus:top-1
-            ${!margin && "mb-4 lg:mb-5"} ${inputValue && "top-1"} `}
+          class={` absolute top-1 pl-[24px] text-sm font-medium leading-[1.3]
+           tracking-[1px] text-middleGrey peer-placeholder-shown:top-5 peer-focus:top-1 `}
           for={name}
         >
           {label} {required && <span class="ml-1">*</span>}

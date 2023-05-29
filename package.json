@@ -41,6 +41,7 @@
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
-    "@modular-forms/qwik": "^0.8.1"
+    "@modular-forms/qwik": "^0.8.1",
+    "clsx": "^1.2.1"
   }
 }

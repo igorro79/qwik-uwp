@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Form } from "@builder.io/qwik-city";
 // import { IsOpenedContext } from "~/root";
 
-import CategoryCheckbox from "~/components/tag-input";
+import CategoryCheckbox from "~/components/FormCategoryCheckbox";
 
 import categories from "~/data/categories.json";
 // import { useForm, zodForm$ } from "@modular-forms/qwik";

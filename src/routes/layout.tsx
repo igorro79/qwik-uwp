@@ -4,34 +4,33 @@ import {
   // useContext,
   useSignal,
   useVisibleTask$,
-  type NoSerialize,
+  // type NoSerialize,
 } from "@builder.io/qwik";
-import DynamicFormWrapper from "~/feature/dynamicContactFormWrapper";
-import DynamicForm from "~/widgets/dynamicContactForm";
+import DynamicFormWrapper from "~/feature/DynamicContactFormWrapper";
+import ContactForm from "~/feature/ContactForm";
 
 // import { IsOpenedContext } from "~/root";
 import Footer from "~/components/footer/footer";
 import Header from "~/components/header/header";
 import { useWindowScroll } from "~/hooks/useWindowScroll";
 
-import { routeLoader$, z } from "@builder.io/qwik-city";
+import { routeLoader$ } from "@builder.io/qwik-city";
 import { type InitialValues } from "@modular-forms/qwik";
 
-export const formSchema = z.object({
-  username: z.string().nonempty(),
-  email: z.string().email("This is not a valid email.").nonempty(),
-  phone: z.string().min(8, { message: "This field min length 8." }), // phone length
-  company: z.string().nonempty(),
-  message: z.string(),
-  about: z.string(),
-  file: z.custom<NoSerialize<File>>().optional(),
-});
+export type ContactForm = {
+  categories: string[];
+  username: string;
+  email: string;
+  phone: string; // phone length
+  company: string;
+  message: string;
+  about: string;
+  file: any;
+};
 
-// Note: you can also use z.input
-// since Zod supports data transformation.
-export type ContactForm = z.infer<typeof formSchema>;
 export const useContactFormLoader = routeLoader$<InitialValues<ContactForm>>(
   () => ({
+    categories: [],
     username: "",
     email: "",
     message: "",
@@ -80,7 +79,7 @@ export default component$(() => {
       <Footer />
 
       <DynamicFormWrapper>
-        <DynamicForm />
+        <ContactForm variant="dynamic" />
       </DynamicFormWrapper>
     </div>
   );

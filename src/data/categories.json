@@ -1,11 +1,7 @@
 [
-  { "name": "branding", "value": "category", "label": "branding" },
-  {
-    "name": "DIGITAL MARKETING",
-    "value": "category",
-    "label": "DIGITAL MARKETING"
-  },
-  { "name": "WEB design", "value": "category", "label": "WEB design" },
-  { "name": "seo", "value": "category", "label": "seo" },
-  { "name": "smm", "value": "category", "label": "smm" }
+  { "value": "branding", "label": "branding" },
+  { "value": "DIGITAL MARKETING", "label": "DIGITAL MARKETING" },
+  { "value": "WEB design", "label": "WEB design" },
+  { "value": "seo", "label": "seo" },
+  { "value": "smm", "label": "smm" }
 ]

@@ -2,7 +2,8 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 // import VideoSection from "~/components/video-section";
-import HeroSection from "~/components/hero-section";
+import MainFormSection from "~/widgets/MainFormSection";
+import HeroSection from "~/widgets/hero-section";
 import MainBtn from "~/components/main-btn/main-btn";
 import TransparentBtn from "~/components/transparent-btn/transparent-btn";
 // import NewForm from "~/widgets/dynamicContactForm";
@@ -25,6 +26,7 @@ export default component$(() => {
             ></path>
           </svg>
         </MainBtn>
+        <MainFormSection />
       </div>
     </>
   );
