@@ -6,7 +6,7 @@ import {
   useVisibleTask$,
   // type NoSerialize,
 } from "@builder.io/qwik";
-import DynamicFormWrapper from "~/feature/DynamicContactFormWrapper";
+import DynamicFormContainer from "~/feature/DynamicContactFormContainer";
 import ContactForm from "~/feature/ContactForm";
 
 // import { IsOpenedContext } from "~/root";
@@ -78,9 +78,9 @@ export default component$(() => {
 
       <Footer />
 
-      <DynamicFormWrapper>
+      <DynamicFormContainer>
         <ContactForm variant="dynamic" />
-      </DynamicFormWrapper>
+      </DynamicFormContainer>
     </div>
   );
 });
