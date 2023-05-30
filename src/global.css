@@ -1,4 +1,9 @@
 /**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+
+/**
  * WHAT IS THIS FILE?
  *
  * Globally applied styles. No matter which components are in the page or matching route,
@@ -141,6 +146,170 @@
     @apply h-[125px] w-[125px]  lg:h-[125px] lg:w-[125px] xl:h-[177px] xl:w-[177px];
   } */
 
+  /*================== btn-style ========================*/
+  .btn {
+    @apply m-auto flex  w-full
+         items-center justify-center gap-[10px] rounded-full bg-main py-[16px] 
+         text-base font-bold uppercase text-white transition-all
+        sm:max-w-[357px];
+  }
+
+  /*==============================
+  btn effects 
+  =================================*/
+  .link-oside {
+    @apply relative overflow-hidden;
+  }
+
+  .link-oside::after {
+    @apply absolute left-0 top-full h-full w-full
+    rounded-[70px] bg-[#DC2D45] transition-all ease-in content-[''];
+  }
+
+  .link-oside:hover {
+    @apply scale-105;
+  }
+
+  .link-oside:hover::after {
+    @apply absolute left-0 top-0 -z-10 h-full w-full 
+    rounded-[70px] bg-[#DC2D45] content-[''];
+  }
+
+  /* ==============  cards wrapper =============*/
+  .cards {
+    @apply 2xl:w-[calc(100%-2px)];
+  }
+
+  .cards-text__left {
+    @apply lg:pr-[33px];
+  }
+
+  .cards-text__right {
+    @apply lg:pl-[33px];
+  }
+
+  /* ========== 
+img-desc-
+========== */
+
+  /* gap-[16px] */
+  .img-desc {
+    @apply absolute top-0 z-[1] flex flex-col
+    px-[20px] py-[18px] 
+    lg:px-[33px] lg:py-[25px] 
+    xl:px-[26px] xl:py-[36px];
+  }
+
+  .img-desc__wrap {
+    @apply mb-[16px]
+    xl:mb-[31px]
+    2xl:mb-[60px];
+  }
+
+  .wrap-text {
+    @apply flex items-center gap-[15px];
+  }
+
+  .img-desc_big {
+    @apply text-4xl font-bold text-white
+    2xl:text-[64px];
+  }
+
+  .wrap-text__inner {
+    @apply flex flex-col;
+  }
+
+  .wrap-text__gap {
+    @apply mb-[7px] flex items-center gap-[7px]
+    lg:mb-[2px] lg:gap-[8px]
+    xl:mb-[20px];
+  }
+
+  .img-desc_small {
+    @apply text-xs font-medium leading-[13px]  text-white
+    lg:text-base lg:leading-[18px]
+    2xl:text-xl 2xl:leading-[22px];
+  }
+
+  /* ========
+btn-card 
+========= */
+
+  .cards__link {
+    @apply flex  text-xl  font-bold leading-6 text-inherit
+     
+    lg:flex lg:justify-between 
+    xl:gap-0 xl:text-[32px];
+  }
+
+  .cards__title {
+    @apply mb-[25px] text-xl font-bold
+     leading-[120%] text-dark dark:text-white
+     lg:mb-[66px] 
+    
+     2xl:mb-[30px] 2xl:text-[32px]  2xl:leading-[120%];
+  }
+
+  .cards__btn {
+    @apply flex h-max;
+  }
+
+  /* ============ 
+cards__wrap 
+============= */
+
+  /* lg:mb-[95px] */
+  .cards__text {
+    @apply mb-[40px] text-sm
+    font-medium
+    text-dark dark:text-white
+    lg:text-base lg:leading-[140%];
+  }
+
+  .cards__desc {
+    @apply text-xs font-medium uppercase leading-[140%]
+     text-dark dark:text-white
+     lg:text-[14px] 
+     xl:text-base;
+  }
+
+  /*================================================
+BEGIN: 06-section-services
+ =============================================== */
+  .text__hover-red {
+    @apply transition ease-in group-hover/card:text-main;
+  }
+
+  /* cards__btn */
+  /* top-[32px] right-[23px] */
+  /*  xl:relative xl:top-[-25px] xl:right-[-2px] 2xl:right-[-32px]  */
+  .wrap-svg__hover-red {
+    @apply rounded-full transition-all ease-in
+  xl:p-[26px]
+                                
+  xl:group-hover/card:bg-main 2xl:p-8;
+  }
+
+  .svg__hover-red {
+    @apply transition-all ease-in 
+  group-hover/card:fill-main 
+  
+  xl:group-hover/card:fill-white;
+  }
+
+  /* hover:text-white active:text-main active:before:bg-main
+      active:before:text-main*/
+  .translate-underline__hover-line__white {
+    @apply relative cursor-pointer transition-all duration-100
+     before:absolute before:-bottom-[1px] before:right-0 before:h-[2px] before:w-0
+     before:bg-white before:opacity-0 before:transition-all
+     before:duration-1000 before:content-[''] 
+     group-hover/card:before:left-0 group-hover/card:before:right-auto
+      group-hover/card:before:w-full group-hover/card:before:opacity-100 
+      group-hover/card:before:duration-300
+      group-hover/card:after:scale-100;
+  }
+
   /* =================  SWIPER ================*/
 
   /* .mySwiper-container {
@@ -228,5 +397,43 @@ STYLES
 
   section.carusel-total-white {
     @apply bg-light text-dark dark:bg-dark dark:text-white;
+<<<<<<< HEAD
   } */
+
+  
+
+  .to-animate {
+    @apply translate-y-10 opacity-0 transition duration-1000 ease-out;
+  }
+  .to-animate.in-view {
+    @apply translate-y-0 opacity-100;
+  }
+  /*============== border-style =============== */
+  .border__top {
+    @apply border-t-[1px] border-t-middleGrey;
+  }
+
+  .border__left {
+    @apply border-l-[1px] border-l-middleGrey;
+  }
+
+  .border__right {
+    @apply border-r-[1px] border-r-middleGrey;
+  }
+
+  .border__bottom {
+    @apply border-b-[1px] border-b-middleGrey;
+  }
+
+  .border__rounded_s {
+    @apply rounded-full border-[1px] border-middleGrey
+   transition ease-in
+   
+    hover:border-white;
+  }
+
+  /* .border__error {
+  @apply border-borderBtn hover:border-borderBtn rounded-full
+    border-[1px];
+} */
 }

@@ -1,20 +1,30 @@
 import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
-// import VideoSection from "~/components/video-section";
+import VideoSection from "~/widgets/video-section";
 import MainFormSection from "~/widgets/MainFormSection";
 import HeroSection from "~/widgets/hero-section";
 import MainBtn from "~/components/main-btn/main-btn";
-import TransparentBtn from "~/components/transparent-btn/transparent-btn";
-// import NewForm from "~/widgets/dynamicContactForm";
+
+
+import Agency from "~/widgets/agency";
+import OurCase from "~/widgets/our-case";
+
+import ServicesSection from "~/widgets/services-section";
+
 
 export default component$(() => {
   return (
     <>
       <HeroSection />
-      {/* <VideoSection /> */}
+
+      <VideoSection />
+      <Agency />
+      <OurCase />
+      <ServicesSection/>
+
       <div class="container  flex flex-col gap-5">
-        <TransparentBtn>read more</TransparentBtn>
+     
         <MainBtn>
           All Cases
           <svg width="15" height="15" viewBox="0 0 15 15" fill="none">

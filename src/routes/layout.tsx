@@ -10,7 +10,7 @@ import DynamicFormWrapper from "~/feature/DynamicContactFormWrapper";
 import ContactForm from "~/feature/ContactForm";
 
 // import { IsOpenedContext } from "~/root";
-import Footer from "~/components/footer/footer";
+import Footer from "~/widgets/Footer";
 import Header from "~/components/header/header";
 import { useWindowScroll } from "~/hooks/useWindowScroll";
 
