@@ -7,6 +7,7 @@ type ActionButtonProps = DefaultButtonProps & {
   variant: "primary" | "secondary" | "submit";
   label: string;
   loading?: boolean;
+  class?: string;
 };
 
 /**
@@ -14,7 +15,13 @@ type ActionButtonProps = DefaultButtonProps & {
  * individual actions.
  */
 export const ActionButton = component$(
-  ({ label, variant, loading, ...props }: ActionButtonProps) => (
+  ({
+    label,
+    variant,
+    loading,
+    class: className,
+    ...props
+  }: ActionButtonProps) => (
     <UnstyledButton
       class={clsx(
         "relative flex items-center justify-center rounded-full px-9 font-bold uppercase no-underline transition-all",
@@ -24,7 +31,8 @@ export const ActionButton = component$(
           "mx-auto w-min overflow-hidden bg-main py-4 text-base text-white after:absolute after:left-0 after:top-full after:h-full after:w-full after:rounded-[70px] after:bg-[#DC2D45] after:transition-all after:ease-in after:content-[''] hover:scale-105 hover:text-white hover:after:top-0  hover:after:-z-10 ",
         //  variant === "submit" same as secondary at the time
         variant === "submit" &&
-          "mx-auto w-min overflow-hidden bg-main py-4 text-base text-white after:absolute after:left-0 after:top-full after:h-full after:w-full after:rounded-[70px] after:bg-[#DC2D45] after:transition-all after:ease-in after:content-[''] hover:scale-105 hover:text-white hover:after:top-0  hover:after:-z-10 "
+          "w-min overflow-hidden bg-main py-4 text-base text-white after:absolute after:left-0 after:top-full after:h-full after:w-full after:rounded-[70px] after:bg-[#DC2D45] after:transition-all after:ease-in after:content-[''] hover:scale-105 hover:text-white hover:after:top-0  hover:after:-z-10 ",
+        className
       )}
       loading={loading}
       {...props}

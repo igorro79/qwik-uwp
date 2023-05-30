@@ -65,7 +65,7 @@ export default component$(
         encType="multipart/form-data"
         class={clsx(
           variant === "main" &&
-            "flex flex-col xl:mr-[26px] xl:basis-[829px] xl:pt-[28px] 2xl:mr-[70px] 2xl:basis-[754px] 2xl:pt-[65px]",
+            "flex flex-col xl:mr-[26px] xl:basis-[64%] xl:pt-[28px] 2xl:mr-[70px] 2xl:basis-1/2 2xl:pt-[65px]",
           variant === "dynamic" && "pb-20 2xl:mr-[78px]",
           className
         )}
@@ -209,6 +209,7 @@ export default component$(
               loading={contactForm.submitting}
               variant="submit"
               label="submit"
+              class={variant === "main" ? "mx-auto lg:mr-0 mb-14 " : ""}
             />
           </div>
         </div>
