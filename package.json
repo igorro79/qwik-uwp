@@ -41,7 +41,12 @@
     "vite-tsconfig-paths": "3.5.0"
   },
   "dependencies": {
+
+    "@modular-forms/qwik": "^0.8.1",
+    "clsx": "^1.2.1",
+
     "@unpic/qwik": "^0.0.19",
     "qwik-image": "^0.0.4"
+
   }
 }

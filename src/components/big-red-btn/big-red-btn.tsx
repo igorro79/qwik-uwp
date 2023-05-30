@@ -14,7 +14,8 @@ export default component$((props: BigBtnProps) => {
      before:w-full before:rounded-full before:bg-main before:transition-all
        before:content-[''] lg:h-[142px] lg:w-[142px] xl:h-[145px] xl:w-[145px] xl:px-2
         xl:text-base xl:hover:before:scale-[0.8]  1xl:h-[158px]
-      1xl:w-[158px] 2xl:h-[177px] 2xl:w-[177px] ${props.class} `}
+      1xl:w-[158px] 2xl:h-[177px] 2xl:w-[177px]
+       disabled:xl:hover:before:scale-100 disabled:before:bg-middleGrey  ${props.class} `}
     >
       <Slot />
     </button>
