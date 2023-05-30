@@ -90,7 +90,6 @@ export default component$(
         )}
         <div class="flex flex-col ">
           <div class="flex flex-col lg:grid lg:grid-cols-2 lg:gap-x-4">
-            {/* <!-- name --> */}
             <Field
               name="username"
               validate={[required("Please enter your name.")]}
@@ -209,7 +208,7 @@ export default component$(
               loading={contactForm.submitting}
               variant="submit"
               label="submit"
-              class={variant === "main" ? "mx-auto lg:mr-0 mb-14 " : ""}
+              class={variant === "main" ? "mx-auto mb-14 lg:mr-0 " : ""}
             />
           </div>
         </div>
