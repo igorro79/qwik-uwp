@@ -39,17 +39,17 @@ type TextInputProps = {
 export const TextInput = component$(
   ({ label, value, error, ...props }: TextInputProps) => {
     const { name, required } = props;
+    // console.log(props);
     const input = useSignal<string | number>();
 
     useTask$(({ track }) => {
       if (!Number.isNaN(track(() => value))) {
-
         input.value = value;
       }
     });
 
     return (
-      <div class={`relative mb-4  ${props.class}`}>
+      <div class="relative mb-4">
         <input
           {...props}
           class={`peer m-0 block  w-full rounded-full border-[1px] border-middleGrey bg-transparent  bg-clip-padding px-[30px] py-5 text-sm font-medium leading-[1.3] tracking-[1px] text-middleGrey transition ease-in-out hover:border-white focus:border-white  focus:shadow-none focus:outline-none focus:outline-0

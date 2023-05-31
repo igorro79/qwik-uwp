@@ -25,8 +25,13 @@ export type ContactForm = {
   company: string;
   message: string;
   about: string;
-  file: any;
+  file: any | undefined;
 };
+// export type ContactResponse = {
+//   message: any;
+//   status: any;
+//   data: any;
+// };
 
 export const useContactFormLoader = routeLoader$<InitialValues<ContactForm>>(
   () => ({

@@ -1,24 +1,28 @@
-import { component$, $ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 
 import {
   useForm,
   email,
   minLength,
   required,
-  type SubmitHandler,
+  // type SubmitHandler,
+  // formAction$,
 } from "@modular-forms/qwik";
-import { useContext } from "@builder.io/qwik";
-import { IsOpenedContext } from "~/root";
+// import { useContext } from "@builder.io/qwik";
+// import { IsOpenedContext } from "~/root";
 
 import { TextInput } from "~/components/form/TextInput";
 import { FileInput } from "~/components/form/FileInput";
-import CategoryCheckbox from "~/components/FormCategoryCheckbox";
+import { CategoryCheckbox } from "~/components/FormCategoryCheckbox";
 import { ActionButton } from "~/components/button/ActionButton";
-
-import { type ContactForm, useContactFormLoader } from "~/routes/layout";
+import {
+  type ContactForm,
+  useContactFormLoader,
+  // type ContactResponse,
+} from "~/routes/layout";
 
 // list of categories should be loadded from DB on SSR (or remain static ??? + languages)
-// import categories from "~/data/categories.json";
+import categories from "~/data/categories.json";
 import clsx from "clsx";
 
 type ContactFormTypes = {
@@ -26,46 +30,43 @@ type ContactFormTypes = {
   class?: string;
 };
 
-//send data to server imitation Fn
-function sendData() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("data sent successfuly");
-    }, 3000);
-  });
-}
-const categories = [
-  { value: "branding", label: "branding" },
-  { value: "DIGITAL MARKETING", label: "DIGITAL MARKETING" },
-  { value: "WEB design", label: "WEB design" },
-  { value: "seo", label: "seo" },
-  { value: "smm", label: "smm" },
-];
+// const delay = $((ms: number) => {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// });
+
+// export const useFormAction = formAction$<ContactForm>((value: any) => {
+//   console.log(value.email);
+// });
+// export const useSendDataToServer = formAction$<ContactForm, ContactResponse>(
+//   (values: any) => {
+//     return {
+//       status: "success",
+//       message: "Data sent successfully",
+//       data: values,
+//     };
+//   }
+// );
 
 export default component$(
   ({ variant = "main", class: className }: ContactFormTypes) => {
-    const isOpened = useContext(IsOpenedContext);
+    // const isOpened = useContext(IsOpenedContext);
 
     const [contactForm, { Form, Field }] = useForm<ContactForm>({
       loader: useContactFormLoader(),
     });
 
     // form submit handler
-    const handleSubmit: SubmitHandler<ContactForm> = $(
-      async (values: any, event: any) => {
-        try {
-          // imitating data sending
-          await sendData().then((message) => {
-            console.log(message, values);
-            if (isOpened.form) isOpened.form = false;
-            //TODO notifier of success needed
-          });
-        } catch (error) {
-          console.log(error);
-          //TODO notifier of error needed
-        }
-      }
-    );
+    // const handleSubmit: SubmitHandler<ContactForm> = $(async (values: any) => {
+    //   try {
+    //     await delay(3000);
+    //     console.log(values);
+    //     if (isOpened.form) isOpened.form = false;
+    //     //TODO notifier of success needed
+    //   } catch (error) {
+    //     console.log(error);
+    //     //TODO notifier of error needed
+    //   }
+    // });
 
     return (
       <Form
@@ -76,7 +77,8 @@ export default component$(
           variant === "dynamic" && "pb-20 2xl:mr-[78px]",
           className
         )}
-        onSubmit$={handleSubmit}
+        onSubmit$={(val) => console.log(val)}
+        // onSubmit$={handleSubmit}
       >
         {variant !== "main" && (
           <div class="mb-6 flex flex-wrap gap-[11px_11px] lg:mb-[46px]">
@@ -217,6 +219,9 @@ export default component$(
               label="submit"
               class={variant === "main" ? "mx-auto mb-14 lg:mr-0 " : ""}
             />
+            {contactForm.response.status === "success" && (
+              <div>{"contactForm"}</div>
+            )}
           </div>
         </div>
       </Form>

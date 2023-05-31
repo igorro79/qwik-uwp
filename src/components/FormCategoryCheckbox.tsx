@@ -23,7 +23,7 @@ interface FormCheckboxProps {
   value?: string;
   checked?: boolean;
 }
-export default component$(
+export const CategoryCheckbox = component$(
   ({
     class: className,
     error,
