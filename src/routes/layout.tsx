@@ -7,7 +7,7 @@ import {
   // type NoSerialize,
 } from "@builder.io/qwik";
 import DynamicFormContainer from "~/feature/DynamicContactFormContainer";
-import ContactForm from "~/feature/ContactFormm";
+import ContactForm from "~/feature/ContactForm";
 
 // import { IsOpenedContext } from "~/root";
 import Footer from "~/widgets/Footer";
@@ -79,8 +79,8 @@ export default component$(() => {
       <Footer />
 
       <DynamicFormContainer>
-        <ContactForm />
-        {/* <ContactForm variant="dynamic" /> */}
+        {/* <ContactForm /> */}
+        <ContactForm variant="dynamic" />
       </DynamicFormContainer>
     </div>
   );

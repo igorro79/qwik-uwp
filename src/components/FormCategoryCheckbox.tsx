@@ -17,26 +17,20 @@ interface FormCheckboxProps {
   onBlur$: PropFunction<
     (event: QwikFocusEvent<HTMLInputElement>, element: HTMLInputElement) => void
   >;
-  required?: boolean;
   class?: string;
   label: string;
   error?: string;
-  name?: string;
   value?: string;
   checked?: boolean;
-  field?: any;
 }
 export default component$(
   ({
     class: className,
     error,
     label,
-    // field,
     checked,
     ...props
   }: FormCheckboxProps) => {
-    const { name } = props;
-
     return (
       <div>
         <label
@@ -53,11 +47,11 @@ export default component$(
           {label}
           <input
             {...props}
-            id={name}
+            id={label}
             class="sr-only"
             type="checkbox"
             aria-invalid={!!error}
-            aria-errormessage={`${name}-error`}
+            aria-errormessage={`${label}-error`}
           />
         </label>
       </div>

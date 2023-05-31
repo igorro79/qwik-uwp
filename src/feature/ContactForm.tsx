@@ -18,7 +18,7 @@ import { ActionButton } from "~/components/button/ActionButton";
 import { type ContactForm, useContactFormLoader } from "~/routes/layout";
 
 // list of categories should be loadded from DB on SSR (or remain static ??? + languages)
-import categories from "~/data/categories.json";
+// import categories from "~/data/categories.json";
 import clsx from "clsx";
 
 type ContactFormTypes = {
@@ -34,6 +34,13 @@ function sendData() {
     }, 3000);
   });
 }
+const categories = [
+  { value: "branding", label: "branding" },
+  { value: "DIGITAL MARKETING", label: "DIGITAL MARKETING" },
+  { value: "WEB design", label: "WEB design" },
+  { value: "seo", label: "seo" },
+  { value: "smm", label: "smm" },
+];
 
 export default component$(
   ({ variant = "main", class: className }: ContactFormTypes) => {

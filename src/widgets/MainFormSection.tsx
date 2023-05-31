@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import ContactForm from "~/feature/ContactFormm";
+import ContactForm from "~/feature/ContactForm";
 
 export default component$(() => {
   const redGradientStyle =
@@ -29,8 +29,8 @@ export default component$(() => {
                 GET A DETAILED AND COMPREHENSIVE COMMERCIAL PROPOSAL
               </p>
             </div>
-            <ContactForm />
-            {/* <ContactForm variant="main" /> */}
+            {/* <ContactForm /> */}
+            <ContactForm variant="main" />
 
             <div class="z-10 lg:pt-[29px] xl:mb-10 xl:border-l xl:pl-[25px] xl:pt-[65px] 2xl:pl-[45px] 2xl:pr-[133px]">
               <a
