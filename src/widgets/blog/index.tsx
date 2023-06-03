@@ -130,7 +130,7 @@ export default component$(() => {
             <div>
               <div class="swiper blogSwiper">
                 {/* <!-- Additional required wrapper --> */}
-                <div class="swiper-wrapper m-0">
+                <div class="swiper-wrapper m-0  " slides-per-view="3"  css-mode="true">
                   {/* <!-- Slides --> */}
                   {/* <!-- card-blog-01 --> */}
                   <div class="swiper-slide">
