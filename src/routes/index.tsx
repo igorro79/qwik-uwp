@@ -23,14 +23,11 @@ export default component$(() => {
       <VideoSection />
       <Agency />
       <OurCase />
-<<<<<<< HEAD
+
       <ServicesSection />
       <DiscussSection />
       <Blog/>
-=======
-      <ServicesSection/>
 
->>>>>>> main
       <div class="container  flex flex-col gap-5">
      
         <MainBtn>
