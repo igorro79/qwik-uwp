@@ -33,6 +33,9 @@
   scrollbar-color: var(--secondary) var(--primary);
 }
 @layer base {
+  html {
+    @apply scroll-smooth text-base font-medium text-dark;
+  }
   .container {
     @apply mx-auto !max-w-[1920px] px-5 lg:px-[30px] 3xl:px-[135px];
   }
@@ -40,33 +43,75 @@
     @apply bg-main text-white;
   }
 
-  .header__contact-body::-webkit-scrollbar,
-  .form__header::-webkit-scrollbar,
+  .custom__scrollbar::-webkit-scrollbar,
   html::-webkit-scrollbar,
   #popupForms::-webkit-scrollbar {
     @apply w-[10px]  bg-dark;
   }
   /* popupForms */
-  .form__header::-webkit-scrollbar-thumb,
+
   html::-webkit-scrollbar-thumb,
-  .header__contact-body::-webkit-scrollbar-thumb,
+  .custom__scrollbar::-webkit-scrollbar-thumb,
   #popupForms::-webkit-scrollbar-thumb {
     @apply rounded-full bg-main;
   }
 }
 
 @layer components {
-  html {
-    @apply scroll-smooth  text-base font-medium text-dark;
-  }
-
-  .wrapper {
+  /* .wrapper {
     @apply relative m-auto flex  max-w-full flex-col  pt-[var(--header-h)] lg:pt-[var(--header-h-xl)] xl:pt-[var(--header-h-xl)];
-  }
+  } */
 
   .lock-wrapper {
     @apply h-screen overflow-hidden;
   }
+
+  /* =========== Red Gradient ============ */
+  .red-gradient-hero {
+    @apply relative overflow-hidden 
+  to-transparent
+  before:absolute before:right-0 before:h-[212px]
+  before:w-[212px] before:translate-x-[50%]
+  before:bg-gradient-radial
+  before:from-main before:blur-[45px] before:content-['']
+
+  lg:before:top-[50px]
+  lg:before:h-[322px] lg:before:w-[322px]
+  lg:before:blur-[60px]
+     
+  xl:before:top-[0px]  xl:before:h-[591px] xl:before:w-[591px]
+  xl:before:blur-[90px];
+  }
+
+  .red-gradient-menu {
+    @apply relative overflow-hidden
+  to-transparent before:absolute
+  before:right-0 before:top-[135px]
+  before:h-[190px]
+  before:w-[190px] before:translate-x-[28%] before:bg-gradient-radial
+
+  before:from-main
+  before:blur-[60px] before:content-['']
+  lg:before:top-[240px]
+  lg:before:h-[220px]
+     
+  lg:before:w-[220px] lg:before:translate-x-[50%]  lg:before:blur-[75px] xl:before:top-[0px]
+  xl:before:h-[591px] xl:before:w-[591px];
+  }
+  /* =========== translate-underline ============ */
+
+  .translate-underline__hover-line__dark {
+    @apply relative transition-all before:absolute before:-bottom-1 before:right-0
+    before:h-px  before:w-0 before:bg-lightDarkGrey before:transition-all
+    before:duration-200 before:content-['']  hover:text-lightDarkGrey hover:before:left-0
+    hover:before:w-full active:text-main active:before:bg-main active:before:text-main;
+  }
+
+  /* =========== FORM dynamic ============ */
+  .active-label {
+    @apply -translate-x-3 -translate-y-7;
+  }
+
   /* =========== TOTAL WHITE HEADER ============ */
 
   .header.white-header {
@@ -82,7 +127,7 @@
     @apply hover:bg-lightGrey dark:hover:bg-transparent;
   }
 
-  .burger-paint-header-dark.header.white-header {
+  /* .burger-paint-header-dark.header.white-header {
     @apply bg-dark text-white dark:bg-dark dark:text-white;
   }
   .burger-paint-header-dark.white-header #nav {
@@ -93,25 +138,13 @@
   }
   .burger-paint-header-dark.white-header .white-header-language {
     @apply hover:bg-transparent dark:hover:bg-transparent;
-  }
+  } */
 
   /* =========== BIG RED ROUND BUTTON ============ */
 
-  /* .big-red-btn {
-    @apply;
-  } */
-  .big-red-btn.cases-page__big-red-btn {
+  /* .big-red-btn.cases-page__big-red-btn {
     @apply h-[125px] w-[125px]  lg:h-[125px] lg:w-[125px] xl:h-[177px] xl:w-[177px];
-  }
-  .big-red-btn#btn-close-popup-forms {
-    @apply relative mx-auto;
-  }
-  .big-red-btn#btnDiscuss {
-    @apply absolute;
-  }
-  .big-red-btn:disabled {
-    @apply transition-all before:bg-middleGrey xl:hover:before:scale-100;
-  }
+  } */
 
   /*================== btn-style ========================*/
   .btn {
@@ -279,7 +312,7 @@ BEGIN: 06-section-services
 
   /* =================  SWIPER ================*/
 
-  .mySwiper-container {
+  /* .mySwiper-container {
     @apply w-full overflow-hidden;
   }
   .mySwiper .swiper-pagination {
@@ -291,12 +324,12 @@ BEGIN: 06-section-services
   }
   .mySwiper .swiper-pagination-bullet-active {
     @apply bg-main;
-  }
+  } */
   /* -----------blog swiper main page---------- */
 
-  .blogSwiper .swiper-slide {
+  /* .blogSwiper .swiper-slide {
     @apply w-auto;
-  }
+  } */
 
   /*=====================================
 STYLES 
@@ -312,44 +345,7 @@ STYLES
     @apply pointer-events-none order-1 bg-grey;
   }
 
-  /*================================================
-Styles borders  btn 
-================================================ */
-  /* border-lightDarkGrey xl:border-t */
-
-  /**/
-  /* .btn {
-    @apply m-auto flex  w-full
-         items-center justify-center gap-[10px] rounded-full bg-main py-[16px] 
-         text-base font-bold uppercase text-white transition-all
-        sm:max-w-[357px];
-  } */
-
-  /*flex*/
-  /*.btn__services {
-    @apply m-auto   w-full
-         items-center justify-center gap-[10px] rounded-full bg-main py-[16px] 
-
-         text-base font-bold uppercase text-white transition-all
-        sm:max-w-[357px];
-  }*/
-
-  /* .btn__transparent {
-    @apply m-auto  flex 
-        w-full items-center justify-center gap-[10px] 
-        rounded-full border-[2px] border-main p-[12px] 
-        text-sm font-bold uppercase leading-[24px]
-        text-dark 
-        transition-all
-        sm:max-w-[357px];
-  } */
-
-  /* TODO added border-[3px] on hover */
-
-  /*.btn__transparent:hover {
-    @apply border-[3px];
-  }*/
-
+  /* 
   .btn__red {
     @apply flex flex-row items-center justify-center
         gap-[10px] rounded-[70px] border-[1px] border-main bg-main px-9 py-4
@@ -366,10 +362,10 @@ Styles borders  btn
     @apply flex flex-row items-center justify-center
          rounded-[70px] border-[1px]  bg-dark px-[20px] py-[13px]
         text-sm font-bold uppercase  leading-[171%] text-white;
-  }
+  } */
 
   /*============== 404 page =============== */
-  .nopage__button:hover ~ div {
+  /* .nopage__button:hover ~ div {
     @apply text-main;
   }
   .nopage__button:hover ~ #back-home {
@@ -377,21 +373,21 @@ Styles borders  btn
   }
   .nopage__button:hover ~ #not-found {
     @apply invisible opacity-0;
-  }
+  } */
 
   /*=== submit button spunner === */
-  .spinner_ajPY {
+  /* .spinner_ajPY {
     transform-origin: center;
-    animation: spinner_AtaB 0.75s infinite linear;
+    animation: spinner 0.75s infinite linear;
   }
-  @keyframes spinner_AtaB {
+  @keyframes spinner {
     100% {
       transform: rotate(360deg);
     }
-  }
+  } */
 
   /*------ filter button ----- */
-  .category__filter-btn {
+  /* .category__filter-btn {
     @apply flex gap-2 rounded-[40px] border border-transparent bg-lightGrey px-4 py-[11px] text-sm uppercase leading-[1.2]
      transition-all hover:bg-dark hover:text-white active:border-main dark:border-lightGrey dark:text-dark dark:hover:text-white;
   }
@@ -401,7 +397,10 @@ Styles borders  btn
 
   section.carusel-total-white {
     @apply bg-light text-dark dark:bg-dark dark:text-white;
-  }
+<<<<<<< HEAD
+  } */
+
+  
 
   .to-animate {
     @apply translate-y-10 opacity-0 transition duration-1000 ease-out;
