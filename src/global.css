@@ -400,8 +400,6 @@ STYLES
 <<<<<<< HEAD
   } */
 
-  
-
   .to-animate {
     @apply translate-y-10 opacity-0 transition duration-1000 ease-out;
   }
@@ -436,4 +434,39 @@ STYLES
   @apply border-borderBtn hover:border-borderBtn rounded-full
     border-[1px];
 } */
+}
+
+/*.swiper-button-next::after {
+  color: #fff;
+  font-size: 80px;
+}*/
+
+/* pagination */
+.swiper-pagination {
+  bottom: 0;
+  //background-color: #ff304d;
+  color: #ff304d;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  line-height: 6px;
+  font-size: 20px;
+  background-color: #fff;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ff304d;
+}
+
+/* auto-width */
+.swiper-slide {
+  width: auto;
+}
+
+.swiper-scrollbar-drag {
+  cursor: pointer;
+  background-color: #ff304d;
 }
